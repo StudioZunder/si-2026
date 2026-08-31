@@ -1,0 +1,3 @@
+# Entwurfsstand zur Abstimmung, bleibt aus Suchmaschinen heraus
+User-agent: *
+Disallow: /

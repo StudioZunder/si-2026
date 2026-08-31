@@ -1,0 +1,1025 @@
+/* ============================================================
+   Sport Import Re-Brush 2026 · Prototyp Startseite
+   Werte aus dem Design Guide, Struktur aus Jans XD-Entwurf,
+   Inhalte aus den neuen Texten und der Live-Seite.
+   ============================================================ */
+
+/* Houschka Pro kommt über Adobe Fonts, siehe Typekit-Verweis im Kopf der Seiten.
+   Myriad Pro liegt weiterhin lokal. */
+@font-face{font-family:'Myriad Pro';src:url('fonts/myriadpro-regular-webfont.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Myriad Pro';src:url('fonts/myriadpro-semibold-webfont.woff2') format('woff2');font-weight:600;font-display:swap;}
+@font-face{font-family:'Myriad Pro';src:url('fonts/myriadpro-bold-webfont.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --rot:#F63440;
+  --rot-dunkel:#DE1A2C;
+  /* Sekundärfarbe laut CD, Pantone 1807 C, trägt den Verlauf im Signet */
+  --rot-sekundaer:#A8353A;
+  --tuerkis:#00AFAB;
+  --tuerkis-dunkel:#009490;
+  --tuerkis-hell:#BAEAE9;
+  --text:#707070;
+  --text-stark:#363636;
+  --linie:#E8E8E8;
+  --flaeche:#F1F2F7;
+  --weiss:#FFFFFF;
+
+  --r-pill:999px;
+  --r-bild:10px;
+
+  --schein:0 4px 9px rgba(54,54,54,.16);
+  --schatten-bild:0 0 10px rgba(54,54,54,.18);
+  --schatten-weich:0 3px 6px rgba(54,54,54,.12);
+
+  --inhalt:1280px;
+  --rinne:40px;
+  --rand:clamp(20px,5vw,40px);
+
+  --font-h:'houschka-pro','Houschka Pro',system-ui,sans-serif;
+  --font-t:'Myriad Pro','Segoe UI',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;background:#E8E8E8;}
+body{
+  margin:0;background:var(--weiss);color:var(--text);
+  font-family:var(--font-t);font-size:16px;line-height:1.4;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block;}
+a{color:var(--tuerkis);text-decoration:none;}
+
+.wrap{max-width:var(--inhalt);margin:0 auto;padding:0 var(--rand);}
+
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:700;text-transform:uppercase;color:var(--text-stark);margin:0;}
+h2{font-size:clamp(28px,4.4vw,59px);line-height:1.08;}
+h2 em,h1 em,h3 em{color:var(--rot);font-style:normal;}
+h3{font-size:20px;line-height:1.2;}
+p{margin:0 0 16px;}
+p:last-child{margin-bottom:0;}
+strong{font-weight:700;color:var(--rot);}
+
+/* ---------- Glas-Buttons nach Bauplan ---------- */
+.btn{
+  position:relative;display:inline-flex;align-items:center;
+  min-width:220px;height:45px;padding:3px 52px 3px 22px;
+  border-radius:var(--r-pill);font-family:var(--font-t);font-size:16px;
+  text-transform:uppercase;letter-spacing:.02em;cursor:pointer;
+  transition:background .3s ease,box-shadow .3s ease;
+}
+.btn .kreis{
+  position:absolute;right:1.5px;top:50%;transform:translateY(-50%);
+  width:41px;height:41px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.btn .pfeil{
+  width:23px;height:23px;transform:rotate(-45deg);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.btn:hover .pfeil{transform:rotate(0deg);}
+
+.btn-bild{
+  background:rgba(255,255,255,.45);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.9);color:var(--weiss);font-weight:700;
+  box-shadow:var(--schein);
+}
+.btn-bild:hover{background:rgba(255,255,255,.58);}
+.btn-bild .kreis{background:rgba(255,255,255,.20);}
+.btn-bild .pfeil{stroke:var(--weiss);}
+
+.btn-hell{
+  background:var(--weiss);border:1px solid var(--tuerkis-hell);
+  color:var(--tuerkis);box-shadow:var(--schein);
+}
+.btn-hell:hover{background:#F7FEFE;}
+.btn-hell .kreis{background:var(--tuerkis-hell);}
+.btn-hell .pfeil{stroke:var(--tuerkis);}
+
+.btn-reihe{display:flex;flex-wrap:wrap;gap:16px;}
+
+/* Textlink mit Pfeil, für Nebenwege */
+.link-pfeil{
+  display:inline-flex;align-items:center;gap:9px;color:var(--tuerkis);
+  font-size:16px;text-transform:uppercase;font-weight:600;letter-spacing:.02em;
+}
+.link-pfeil svg{width:19px;height:19px;stroke:var(--tuerkis);transform:rotate(-45deg);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);}
+.link-pfeil:hover svg{transform:rotate(0deg);}
+
+/* ---------- Kopfleiste ---------- */
+.kopfleiste{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  transition:background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease;
+}
+.kopfleiste.glas{
+  background:rgba(255,255,255,.72);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:var(--schatten-weich);
+}
+.kopfleiste .wrap{display:flex;align-items:center;gap:24px;height:88px;}
+
+/* Wortmarke links, weiß über dem Video, farbig auf heller Leiste */
+.logo{display:block;line-height:0;}
+.logo img{height:38px;width:auto;transition:opacity .3s ease;}
+.logo .weiss{display:block;}
+.logo .farbig{display:none;}
+.kopfleiste.glas .logo .weiss,
+.kopfleiste.hell .logo .weiss{display:none;}
+.kopfleiste.glas .logo .farbig,
+.kopfleiste.hell .logo .farbig{display:block;}
+
+/* Sprachkürzel wie auf der bestehenden Seite: DE EN PL, die aktive in Rot */
+.sprachwahl{
+  margin-left:auto;display:flex;align-items:center;gap:14px;
+  font-family:var(--font-t);font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+}
+.sprachwahl a{color:rgba(255,255,255,.85);transition:color .25s ease;}
+.sprachwahl a:hover{color:var(--weiss);}
+.sprachwahl a.an{color:var(--rot);font-weight:700;}
+.kopfleiste.glas .sprachwahl a,
+.kopfleiste.hell .sprachwahl a{color:var(--text);}
+.kopfleiste.glas .sprachwahl a.an,
+.kopfleiste.hell .sprachwahl a.an{color:var(--rot);}
+
+/* Hamburger, auf jeder Bildschirmbreite */
+.menue-schalter{
+  margin-left:20px;width:50px;height:50px;border-radius:var(--r-pill);
+  border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;z-index:80;
+  transition:background .3s ease,border-color .3s ease;
+}
+.menue-schalter:hover{background:rgba(255,255,255,.34);}
+.menue-schalter span{display:block;width:22px;height:2px;background:#fff;position:relative;
+  transition:background .2s ease;}
+.menue-schalter span::before,.menue-schalter span::after{
+  content:'';position:absolute;left:0;width:22px;height:2px;background:#fff;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),top .2s ease;}
+.menue-schalter span::before{top:-7px;}
+.menue-schalter span::after{top:7px;}
+.kopfleiste.glas .menue-schalter{border-color:var(--linie);background:var(--weiss);}
+.kopfleiste.glas .menue-schalter span,
+.kopfleiste.glas .menue-schalter span::before,
+.kopfleiste.glas .menue-schalter span::after{background:var(--text-stark);}
+/* Offen wird das Kreuz daraus */
+.menue-schalter.offen{background:var(--weiss);border-color:var(--linie);}
+.menue-schalter.offen span{background:transparent;}
+.menue-schalter.offen span::before{top:0;transform:rotate(45deg);background:var(--text-stark);}
+.menue-schalter.offen span::after{top:0;transform:rotate(-45deg);background:var(--text-stark);}
+
+/* Menüfläche */
+.menue{
+  position:fixed;inset:0;z-index:70;background:var(--weiss);
+  padding:120px var(--rand) 48px;overflow-y:auto;
+  opacity:0;visibility:hidden;transform:translateY(-14px);
+  transition:opacity .32s ease,transform .32s ease,visibility .32s;
+}
+.menue.offen{opacity:1;visibility:visible;transform:translateY(0);}
+.menue .inhalt{max-width:var(--inhalt);margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:var(--rinne);}
+.menue-liste{list-style:none;margin:0;padding:0;}
+.menue-liste li{border-bottom:1px solid var(--linie);}
+.menue-liste a{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;color:var(--text-stark);
+  font-size:clamp(24px,3.2vw,38px);line-height:1.1;padding:16px 0;
+  transition:color .25s ease,padding-left .25s ease;
+}
+.menue-liste a:hover{color:var(--rot);padding-left:10px;}
+.menue-liste a svg{width:22px;height:22px;stroke:var(--tuerkis);transform:rotate(-45deg);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);}
+.menue-liste a:hover svg{transform:rotate(0deg);}
+/* Punkte ohne eigene Seite stehen sichtbar im Menü und ruhen, bis die Seite steht */
+.menue-liste .ruht span{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(24px,3.2vw,38px);line-height:1.1;padding:16px 0;
+  color:var(--text);opacity:.4;cursor:default;
+}
+.menue-liste .ruht svg{width:22px;height:22px;stroke:var(--text);transform:rotate(-45deg);}
+.menue .neben{padding-top:10px;}
+.menue .neben h4{font-family:var(--font-h);font-weight:700;font-size:13px;letter-spacing:.14em;
+  color:var(--tuerkis);margin:0 0 14px;text-transform:uppercase;}
+.menue .neben p{font-size:15px;line-height:1.6;}
+.menue .sprachen{display:flex;gap:14px;margin-top:26px;}
+.menue .sprachen a{
+  font-family:var(--font-t);font-size:16px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text);
+}
+.menue .sprachen a.an{color:var(--rot);font-weight:700;}
+
+/* ---------- Bühne oben ---------- */
+/* Der Bühnenblock sitzt im unteren Drittel, so wie in Jans Entwurf */
+.buehne{position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  background:#141414;overflow:hidden;padding:120px 0 clamp(96px,11vh,150px);}
+.buehne video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+/* Sanfter Verlauf nach unten: gibt der Schrift Halt und dem Bild Tiefe */
+.buehne::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(0,0,0,.20) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,.46) 100%);
+}
+.buehne .wrap{position:relative;z-index:2;width:100%;}
+/* Das Signet steht groß neben der Headline, so wie im Entwurf von Jan */
+.buehne-inhalt{display:flex;align-items:center;gap:clamp(18px,3vw,54px);}
+.signet-gross{
+  flex:0 0 auto;height:clamp(150px,19vw,300px);width:auto;
+  margin-left:clamp(-56px,-3vw,0px);
+  filter:drop-shadow(0 6px 26px rgba(0,0,0,.28));
+}
+.buehne-text{min-width:0;}
+.buehne h1{
+  color:var(--weiss);font-size:clamp(34px,5.4vw,62px);line-height:1.06;max-width:30ch;
+  text-shadow:0 2px 20px rgba(0,0,0,.38);margin-bottom:22px;
+}
+.buehne .lead{
+  color:rgba(255,255,255,.94);font-size:clamp(16px,1.5vw,19px);line-height:1.55;max-width:48ch;
+  text-shadow:0 1px 14px rgba(0,0,0,.5);margin-bottom:34px;
+}
+.buehne .wege{display:flex;flex-wrap:wrap;gap:16px;}
+.buehne .wege .btn{box-shadow:none;}
+/* Zwei Winkel nach unten, wie in Jans Entwurf, ohne Beschriftung */
+.scroll-hinweis{
+  position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  width:52px;height:44px;
+}
+.scroll-hinweis svg{
+  width:38px;height:32px;stroke:rgba(255,255,255,.92);
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));
+  animation:sinken 2.4s ease-in-out infinite;
+}
+.scroll-hinweis:hover svg{stroke:var(--weiss);}
+@keyframes sinken{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+
+/* ---------- Abschnitte ---------- */
+section{padding:clamp(56px,7vw,96px) 0;position:relative;}
+.sek-kopf{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px;}
+.sek-kopf .titel{flex:1 1 380px;}
+.sek-kopf .zusatz{margin-left:auto;padding-bottom:6px;}
+.sek-intro{max-width:62ch;font-size:17px;line-height:1.55;}
+
+/* Das Band: gibt einem Bereich eine eigene Bühne */
+.band{position:relative;}
+.band::before{
+  content:'';position:absolute;left:0;right:0;z-index:0;
+  background:var(--flaeche);
+}
+.band.band-grau::before{top:4%;bottom:4%;}
+.band.band-rot::before{background:var(--rot);top:0;bottom:26%;}
+.band.band-anthrazit::before{background:#2B2B2B;top:8%;bottom:8%;}
+.band > .wrap{position:relative;z-index:1;}
+
+/* Bild und Platzhalter */
+.bild{border-radius:var(--r-bild);box-shadow:var(--schatten-bild);overflow:hidden;background:var(--flaeche);
+  margin:0;display:block;}
+.bild img{width:100%;height:100%;display:block;object-fit:cover;}
+/* Steht ein Motiv noch aus, hält diese Fläche den Platz.
+   Das graue Platzhalterbild zeigt Format und Wirkung, die Notiz nennt das Motiv. */
+.platz{
+  position:relative;isolation:isolate;overflow:hidden;
+  border-radius:var(--r-bild);box-shadow:var(--schatten-bild);
+  background:#E4E6E8;color:#4A4F53;display:flex;align-items:flex-end;
+  padding:20px;line-height:1.35;
+  /* Die Motivnotiz bleibt im Quelltext für die spätere Bildzuordnung,
+     sichtbar steht allein der Hinweis Motiv folgt */
+  font-size:0;
+  text-shadow:0 1px 0 rgba(255,255,255,.9), 0 0 9px rgba(255,255,255,.85);
+}
+/* Das Platzhaltermotiv liegt stark weichgezeichnet hinter der Notiz,
+   so bleibt sichtbar, dass hier ein Bild einzieht, ohne den Blick zu binden */
+.platz::before{
+  content:'';position:absolute;inset:-30px;z-index:-1;
+  background:url('platzhalter.svg') center/cover no-repeat;
+  filter:blur(24px);
+}
+.platz::after{
+  content:'Motiv folgt';position:absolute;top:14px;left:18px;
+  font-family:var(--font-h);font-weight:700;font-size:12px;letter-spacing:.14em;
+  color:#6E7377;text-shadow:0 1px 0 #fff, 0 0 8px #fff;
+}
+.platz.hoch{aspect-ratio:400/481;}
+.platz.quer{aspect-ratio:840/366;}
+.platz.standard{aspect-ratio:400/268;}
+.platz.buehne-breit{aspect-ratio:1280/560;}
+
+/* ---------- 01 Wir sind Sport Import ---------- */
+/* Die Überschrift steht einzeilig über dem linken Bild, wie in Jans Entwurf */
+.uns-titel{margin-bottom:clamp(22px,2.8vw,38px);white-space:nowrap;}
+/* Der Text steht zwischen den beiden Bildern, linksbündig gesetzt, der Button darunter */
+.uns{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,1fr);
+  gap:clamp(24px,3.2vw,var(--rinne));align-items:center;
+}
+.uns .text{text-align:left;}
+/* Der erste Satz steht bei Jan als rote Zwischenzeile über dem Fließtext */
+.uns .text .zwischen{
+  font-family:var(--font-t);font-weight:700;color:var(--rot);
+  font-size:clamp(17px,1.7vw,19px);line-height:1.35;margin-bottom:16px;
+}
+.uns .text .btn-reihe{justify-content:flex-start;margin-top:clamp(24px,3vw,34px);}
+.zahlenband{
+  margin-top:clamp(34px,4vw,54px);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.zahlenband .zahl{padding:26px 18px 4px;text-align:center;}
+.zahlenband .wert{
+  font-family:var(--font-h);font-weight:700;
+  font-size:clamp(36px,4.2vw,58px);line-height:1;color:var(--rot);
+  display:flex;align-items:flex-start;justify-content:center;gap:1px;letter-spacing:-.01em;
+}
+.zahlenband .wert sup{font-size:.46em;line-height:1;margin-top:.18em;}
+.zahlenband .was{
+  margin-top:8px;font-size:16px;line-height:1.3;
+  font-weight:700;color:var(--text-stark);
+}
+
+/* ---------- 02 Mit uns wachsen ---------- */
+/* Kopf des roten Bandes: Text links, Motiv daneben */
+.wachsen-kopf{
+  color:var(--weiss);display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.62fr);
+  gap:clamp(24px,3.4vw,48px);align-items:center;
+}
+.wachsen-kopf .wort{max-width:60ch;}
+.wachsen-kopf .bild-neben{aspect-ratio:4/3;}
+.wachsen-kopf h2,.wachsen-kopf h2 em{color:var(--weiss);}
+.wachsen-kopf h2 em{opacity:.72;}
+.wachsen-kopf p{color:rgba(255,255,255,.92);font-size:17px;line-height:1.55;}
+/* Die Stationen stehen gleich groß nebeneinander */
+.achse{
+  margin-top:clamp(30px,3.4vw,48px);display:grid;grid-auto-flow:column;
+  grid-auto-columns:minmax(190px,1fr);gap:0;position:relative;align-items:end;
+  overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;
+}
+.achse .halt{position:relative;padding:0 16px;text-align:center;}
+/* Ohne Skript steht alles sofort. Erst die Klasse animiert setzt den Startpunkt. */
+.achse.animiert .halt{
+  opacity:0;transform:scale(.92);
+  transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);
+}
+.achse.animiert.sichtbar .halt{
+  opacity:1;transform:scale(1);transition-delay:calc(var(--i,0) * .12s);
+}
+/* Die Logos sitzen in weißen Kreisen, so wie die Rundfelder im Entwurf */
+.achse .marke{
+  margin:0 auto;width:126px;height:126px;background:var(--weiss);
+  border-radius:50%;padding:24px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.16),0 0 0 6px rgba(255,255,255,.16);
+}
+.achse .marke img{
+  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+}
+.achse .jahr{
+  margin-top:14px;font-family:var(--font-h);font-weight:700;
+  font-size:clamp(17px,1.5vw,21px);color:var(--weiss);text-align:center;
+}
+@media (prefers-reduced-motion:reduce){
+  .achse.animiert .halt{opacity:1;transform:none;transition:none;}
+}
+
+/* Weiße Karte am Fuß des Bandes: Motiv links, Text und Buttons rechts */
+.wachsen-fuss{
+  margin-top:clamp(30px,4vw,46px);background:var(--weiss);border-radius:var(--r-bild);
+  box-shadow:var(--schatten-weich);padding:clamp(24px,3vw,36px);
+}
+.wachsen-fuss .wort{display:grid;gap:26px;align-items:center;grid-template-columns:minmax(0,1fr) auto;}
+.wachsen-fuss p{max-width:56ch;}
+
+/* ---------- 03 Starke Partnerschaft ---------- */
+.partner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,var(--rinne));align-items:center;}
+.leistungen{list-style:none;margin:26px 0 30px;padding:0;display:grid;gap:14px;}
+.leistungen li{display:flex;align-items:flex-start;gap:14px;font-size:17px;color:var(--text-stark);}
+.leistungen .haken{
+  flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--tuerkis-hell);
+  display:grid;place-items:center;margin-top:1px;
+}
+.leistungen .haken svg{width:14px;height:14px;stroke:var(--tuerkis);}
+
+/* ---------- 04 Karriere ---------- */
+.karriere{position:relative;}
+.karriere .platz{aspect-ratio:1280/520;}
+.karriere .karte{
+  background:var(--weiss);border-radius:var(--r-bild);box-shadow:var(--schatten-weich);
+  padding:clamp(26px,3.4vw,44px);max-width:640px;margin-top:-90px;position:relative;z-index:2;
+}
+
+/* ---------- 05 Aktuelles ---------- */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--rinne);}
+/* Der Beitrag steht ohne weiße Fläche direkt auf dem Band, allein das Motiv trägt Kante */
+.news .karte{
+  display:flex;flex-direction:column;background:transparent;
+  transition:transform .3s ease;
+}
+.news .karte:hover{transform:translateY(-4px);}
+.news .karte .platz{aspect-ratio:400/240;}
+.news .karte .inhalt{padding:22px 0 0;display:flex;flex-direction:column;flex:1 1 auto;}
+.news .datum{font-family:var(--font-h);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--tuerkis);margin-bottom:10px;}
+.news h3{margin-bottom:12px;}
+.news .text{font-size:15px;line-height:1.5;margin-bottom:22px;}
+.news .karte .btn{margin-top:auto;align-self:flex-start;}
+
+/* ---------- 06 Servicecenter ---------- */
+.service{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(28px,4vw,var(--rinne));align-items:center;}
+.service .marken-liste{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px;}
+.service .chip{
+  border:1px solid var(--linie);border-radius:var(--r-pill);padding:8px 16px;
+  font-size:14px;color:var(--text-stark);background:var(--weiss);
+}
+
+/* ---------- Markenband ---------- */
+.markenband{background:var(--weiss);padding:34px 0;border-top:1px solid var(--linie);border-bottom:1px solid var(--linie);overflow:hidden;}
+.markenband .laufband{display:flex;gap:56px;width:max-content;animation:laufen 42s linear infinite;}
+.markenband:hover .laufband{animation-play-state:paused;}
+/* Jedes Logo bekommt dasselbe Feld, damit breite Wortmarken
+   und schmale Signets gleich viel Gewicht tragen. Maß aus dem Entwurf: 255 × 94 */
+.markenband .logo-feld{
+  flex:0 0 auto;width:140px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+}
+/* Die Logos laufen in Farbe, beim Zeigen treten sie etwas hervor */
+.markenband .logo-feld img{
+  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+  opacity:.9;transition:opacity .3s ease,transform .3s ease;
+}
+.markenband .logo-feld img:hover{opacity:1;transform:scale(1.04);}
+@keyframes laufen{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- Fuß ---------- */
+/* ---------- Fuß, nachgebaut nach sportimport.de ---------- */
+footer{
+  position:relative;background:#E8E8E8;color:var(--text);
+  padding:3.5rem 0 5rem;
+}
+/* Das Rad steht groß rechts und greift oben über die Fläche hinaus.
+   Das Feld schneidet es unten sauber an der Seitenkante ab. */
+footer .rad-feld{
+  position:absolute;right:0;top:-100px;bottom:0;width:620px;
+  overflow:hidden;z-index:0;pointer-events:none;
+}
+footer .rad{
+  position:absolute;right:-70px;top:0;height:580px;width:auto;
+  user-select:none;
+}
+footer .wrap{position:relative;z-index:1;}
+/* Das Logo steht allein über den drei Spalten */
+footer .marke{margin:0 0 clamp(34px,4vw,58px) 42px;}
+footer .marke img{width:200px;height:auto;}
+footer .spalten{
+  display:grid;grid-template-columns:22% 20% 24%;gap:var(--rinne);
+  align-items:start;padding-left:42px;
+}
+
+footer .kontakt{list-style:none;margin:0;padding:0;display:grid;gap:16px;}
+footer .kontakt li{display:flex;align-items:flex-start;gap:9px;font-size:16px;line-height:1.4;}
+footer .kontakt a{color:var(--text);}
+footer .kontakt a:hover{color:var(--text-stark);}
+footer .kontakt svg{flex:0 0 auto;width:28px;height:28px;stroke:var(--text);opacity:.757;}
+
+footer .wege{list-style:none;margin:0;padding:0;}
+footer .wege li{margin:0;}
+footer .wege a{
+  display:block;padding:8px 0;color:var(--text-stark);
+  font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;
+  transition:color .3s ease;
+}
+footer .wege a:hover{color:var(--rot);}
+
+footer .recht p{margin:0 0 18px;}
+footer .recht a,footer .recht button{
+  font-family:var(--font-t);font-size:14px;font-weight:600;text-transform:uppercase;
+  color:#4D4D4D;background:none;border:0;padding:0;cursor:pointer;letter-spacing:.02em;
+  transition:color .3s ease;
+}
+footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
+
+/* ---------- Schmale Bildschirme ---------- */
+@media (max-width:1000px){
+  .menue .inhalt{grid-template-columns:1fr;}
+  .menue .neben{border-top:1px solid var(--linie);padding-top:26px;margin-top:8px;}
+  .logo img{height:32px;}
+  .uns,.partner,.service{grid-template-columns:1fr;}
+  .uns .text{text-align:left;}
+  .uns .text .btn-reihe{justify-content:flex-start;}
+  .wachsen-fuss{grid-template-columns:1fr;}
+  .news{grid-template-columns:1fr 1fr;}
+  footer .spalten{grid-template-columns:1fr 1fr;padding-left:0;}
+  footer .marke{margin-left:0;}
+  footer .rad-feld{top:-60px;width:420px;}
+  footer .rad{height:380px;right:-60px;}
+}
+@media (max-width:680px){
+  /* Auf dem Telefon steht das Signet über der Headline */
+  .buehne-inhalt{display:block;}
+  .signet-gross{height:96px;margin:0 0 20px;}
+  .zahlenband{grid-template-columns:1fr 1fr;gap:10px 18px;}
+  .news{grid-template-columns:1fr;}
+  .btn{width:100%;}
+  .btn-reihe{flex-direction:column;}
+  .sek-kopf .zusatz{margin-left:0;width:100%;}
+  .karriere .karte{margin-top:-40px;}
+  /* Zeitachse stellt sich senkrecht */
+  .achse{grid-auto-flow:row;grid-auto-columns:auto;gap:0;overflow-x:visible;}
+  .achse .halt{padding:0 0 26px 34px;text-align:left;}
+  .achse .halt::before{top:0;bottom:0;left:7px;right:auto;width:2px;height:auto;}
+  .achse .halt:first-child::before{top:8px;left:7px;}
+  .achse .halt:last-child::before{bottom:auto;height:10px;}
+  .achse .halt::after{top:2px;left:0;}
+  .achse .jahr,.achse .marke{text-align:left;}
+  .achse .marke{margin:12px 0 0;}
+  footer .spalten{grid-template-columns:1fr;}
+  /* Auf dem Telefon tritt das Rad in die untere Ecke zurück */
+  footer .rad-feld{top:auto;height:300px;width:300px;}
+  footer .rad{height:300px;right:-120px;opacity:.9;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto;}
+}
+
+/* ============================================================
+   Bausteine für die Unterseiten, dort ohne Bühne oben
+   ============================================================ */
+
+/* Leiste steht auf Unterseiten dauerhaft hell */
+.kopfleiste.fest{
+  background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:var(--schatten-weich);
+}
+.kopfleiste.fest .logo .weiss{display:none;}
+.kopfleiste.fest .logo .farbig{display:block;}
+.kopfleiste.fest .sprachwahl a{color:var(--text);}
+.kopfleiste.fest .sprachwahl a.an{color:var(--rot);}
+.kopfleiste.fest .menue-schalter{border-color:var(--linie);background:var(--weiss);}
+.kopfleiste.fest .menue-schalter span,
+.kopfleiste.fest .menue-schalter span::before,
+.kopfleiste.fest .menue-schalter span::after{background:var(--text-stark);}
+
+/* Seitenkopf statt Bühne */
+.seitenkopf{padding:calc(88px + clamp(40px,5vw,72px)) 0 clamp(30px,4vw,48px);}
+.seitenkopf .brot{
+  font-family:var(--font-h);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tuerkis);margin-bottom:18px;
+}
+.seitenkopf .brot a{color:var(--text);}
+.seitenkopf .brot a:hover{color:var(--rot);}
+.seitenkopf h1{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;color:var(--text-stark);
+  font-size:clamp(30px,4.6vw,59px);line-height:1.07;max-width:20ch;
+}
+.seitenkopf h1 em{color:var(--rot);font-style:normal;}
+/* Der Lead kann fett auftreten, wenn er die Kernaussage der Seite trägt */
+.seitenkopf .lead.stark{font-weight:700;}
+.seitenkopf .lead{
+  margin-top:20px;font-size:clamp(17px,1.6vw,20px);line-height:1.55;max-width:60ch;color:var(--text);
+}
+
+/* Seitenkopf auf voller roter Fläche, die Schrift tritt darauf in Weiß auf */
+/* Der Verlauf folgt dem Signet: Winkel 82,8 Grad, Primärrot bei 20 Prozent,
+   Sekundärrot bei 80 Prozent. In CSS zählt der Winkel ab Norden, daraus wird 7,2 Grad. */
+.seitenkopf.rot{
+  background:linear-gradient(7.2deg,var(--rot) 20%,var(--rot-sekundaer) 80%);
+}
+.seitenkopf.rot .brot{color:rgba(255,255,255,.78);}
+.seitenkopf.rot .brot a{color:var(--weiss);}
+.seitenkopf.rot .brot a:hover{color:rgba(255,255,255,.75);}
+.seitenkopf.rot h1{color:rgba(255,255,255,.72);}
+.seitenkopf.rot h1 em{color:var(--weiss);}
+.seitenkopf.rot .lead,
+.seitenkopf.rot .sek-intro{color:rgba(255,255,255,.94);}
+
+/* Durchgehende Fläche für lange Abschnitte */
+.flaeche{background:var(--flaeche);}
+
+/* Wechselnde Zweispalter */
+.wechsel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,var(--rinne));align-items:center;}
+.wechsel + .wechsel{margin-top:clamp(44px,5vw,78px);}
+.wechsel h3{font-size:clamp(20px,2.2vw,26px);margin-bottom:14px;}
+.wechsel p{font-size:17px;line-height:1.55;}
+
+/* Zeitachse mit Text, für die Unternehmensgeschichte */
+.achse-text{
+  margin-top:44px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);
+  position:relative;overflow-x:auto;padding-bottom:8px;
+}
+.achse-text .halt{position:relative;padding:48px 22px 0;}
+.achse-text .halt::before{
+  content:'';position:absolute;top:14px;left:0;right:0;height:2px;background:var(--linie);
+}
+.achse-text .halt::after{
+  content:'';position:absolute;top:7px;left:calc(50% - 8px);width:16px;height:16px;border-radius:50%;
+  background:var(--rot);box-shadow:0 0 0 5px rgba(246,52,64,.16);
+}
+.achse-text .halt:first-child::before{left:50%;}
+.achse-text .halt:last-child::before{right:50%;}
+.achse-text .jahr{font-family:var(--font-h);font-weight:700;font-size:28px;color:var(--rot);text-align:center;}
+.achse-text .was{margin-top:10px;font-size:15px;line-height:1.45;text-align:center;}
+
+/* Geschäftsführung */
+.fuehrung{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--rinne);margin-top:36px;}
+.fuehrung .person{
+  background:var(--weiss);border-radius:var(--r-bild);box-shadow:var(--schatten-weich);overflow:hidden;
+}
+.fuehrung .person .platz{border-radius:0;box-shadow:none;aspect-ratio:400/380;}
+.fuehrung .person .txt{padding:22px 24px 26px;}
+.fuehrung .person .name{font-family:var(--font-h);font-weight:700;font-size:19px;text-transform:uppercase;color:var(--text-stark);}
+.fuehrung .person .rolle{margin-top:8px;font-size:15px;line-height:1.45;}
+
+/* Fachbereiche als Chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.chips span{
+  border:1px solid var(--linie);border-radius:var(--r-pill);padding:9px 18px;
+  font-size:15px;color:var(--text-stark);background:var(--weiss);
+}
+
+/* Abschließender Aufruf */
+.aufruf{
+  background:#2B2B2B;color:var(--weiss);border-radius:var(--r-bild);
+  padding:clamp(30px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:30px;align-items:center;
+}
+.aufruf h2{color:var(--weiss);}
+.aufruf h2 em{color:var(--rot);}
+.aufruf p{color:rgba(255,255,255,.86);font-size:17px;line-height:1.55;margin-top:14px;max-width:56ch;}
+
+/* ---------- Belegzeile direkt unter dem Seitenkopf ---------- */
+.beleg{background:var(--tuerkis);color:var(--weiss);}
+.beleg .reihe{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--rinne);padding:30px 0;}
+.beleg .punkt{display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.45;}
+.beleg .punkt .marke{
+  flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.22);
+  display:grid;place-items:center;font-family:var(--font-h);font-weight:700;font-size:13px;
+}
+.beleg .punkt .marke svg{width:15px;height:15px;stroke:var(--weiss);}
+
+/* ---------- Zitat in Versalien, als angesprochener Satz gesetzt ---------- */
+.zitat{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(19px,2vw,24px);line-height:1.4;color:var(--text-stark);
+  text-wrap:balance;
+}
+
+/* Zweiter und jeder weitere Zweispalter bekommt Luft nach oben */
+.wechsel + .wechsel{margin-top:clamp(44px,5vw,78px);}
+
+/* ---------- Schrittfolge mit Nummern ---------- */
+.schritte{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--rinne);margin-top:36px;}
+.schritte .schritt{
+  background:var(--weiss);border-radius:var(--r-bild);box-shadow:var(--schatten-weich);
+  padding:26px 24px 28px;position:relative;
+}
+/* Die Ziffer sitzt im Kreis, gleiche Bauart wie die Icon-Kreise der Belegkarten */
+.schritte .nr{
+  width:52px;height:52px;border-radius:50%;background:var(--tuerkis-hell);
+  display:grid;place-items:center;margin-bottom:16px;
+  font-family:var(--font-h);font-weight:700;font-size:24px;line-height:1;
+  color:var(--rot);
+}
+.schritte h4{font-size:16px;letter-spacing:.04em;margin-bottom:10px;}
+.schritte p{font-size:15px;line-height:1.5;}
+
+/* ---------- Belege als Reihe kleiner Karten ---------- */
+.belege{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--rinne);margin-top:36px;}
+.belege .beleg-karte{
+  background:var(--weiss);border-radius:var(--r-bild);box-shadow:var(--schatten-weich);
+  padding:24px 24px 26px;
+}
+/* Jede Karte trägt links ein Linien-Icon im Kreis, gleiche Bauart wie die Benefits */
+.belege .beleg-karte{display:flex;align-items:center;gap:15px;}
+.belege .zeichen{
+  flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:var(--tuerkis-hell);
+  display:grid;place-items:center;
+}
+.belege .zeichen svg{width:25px;height:25px;stroke:var(--tuerkis);fill:none;}
+.belege .zeile{min-width:0;font-size:15px;line-height:1.4;color:var(--text-stark);}
+/* Die Kernaussage steht groß in Houschka und tiefem Schwarz,
+   der Rest des Satzes läuft schlank darunter weiter. Der Wortlaut der Vorlage bleibt. */
+.belege .zeile b{
+  display:block;font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(16px,1.55vw,19px);line-height:1.12;letter-spacing:.005em;
+  color:var(--rot);margin-bottom:7px;overflow-wrap:break-word;
+}
+/* Karten ohne Zahl führen ein leises Wort über die große Zeile */
+/* Reine Zahlen tragen die größte Stufe, das gibt dem Raster Rhythmus */
+.belege .zeile b.zahl{font-size:clamp(30px,3.2vw,38px);line-height:1;margin-bottom:4px;}
+.belege .zeile .vor{
+  display:block;font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:12px;letter-spacing:.16em;color:var(--text);margin-bottom:5px;
+}
+
+/* ---------- Galerie aus drei Motiven ---------- */
+.galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--rinne);margin-top:36px;}
+
+/* ---------- Hinweiskasten für die Abstimmung ---------- */
+.hinweis{
+  background:var(--flaeche);border-left:4px solid var(--tuerkis);
+  border-radius:0 var(--r-bild) var(--r-bild) 0;padding:20px 24px;font-size:15px;margin-top:30px;
+}
+.hinweis b{color:var(--text-stark);}
+
+/* ============================================================
+   Über uns, Aufbau nach Jans XD-Entwurf, Seite 8
+   ============================================================ */
+
+/* Kopfblock: Text über zwei Spalten, rechts das hohe Motiv über beide Reihen */
+.ueber-oben{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.2vw,30px);align-items:start;
+}
+.ueber-oben .text{grid-column:1/3;grid-row:1;padding-right:clamp(0px,2vw,30px);}
+.ueber-oben .text h1{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,4vw,50px);line-height:1.06;color:var(--text-stark);margin-bottom:18px;
+}
+.ueber-oben .text h1 em{color:var(--rot);font-style:normal;}
+/* Unterzeile aus dem Dokument, steht zwischen Headline und Fließtext */
+.ueber-oben .text .unter-titel{
+  font-size:clamp(17px,1.9vw,22px);line-height:1.4;color:var(--text-stark);
+  margin:-8px 0 22px;max-width:52ch;
+}
+.ueber-oben .text p{font-size:15px;line-height:1.62;}
+.ueber-oben .text p + p{margin-top:14px;}
+.ueber-oben .hoch-rechts{grid-column:3;grid-row:1/3;align-self:stretch;min-height:100%;}
+.ueber-oben .b1{grid-column:1;grid-row:2;aspect-ratio:6/5;}
+.ueber-oben .b2{grid-column:2;grid-row:2;aspect-ratio:6/5;}
+
+/* Nächste Generation: hohes Motiv links, oben ein Querformat, darunter der Text */
+.ueber-generation{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.2vw,30px);align-items:start;
+}
+.ueber-generation .hoch-links{grid-column:1;grid-row:1/3;align-self:stretch;min-height:100%;}
+.ueber-generation .quer-oben{grid-column:2/4;grid-row:1;aspect-ratio:1280/560;}
+.ueber-generation .text{grid-column:2/4;grid-row:2;padding-top:clamp(14px,2vw,26px);}
+.ueber-generation .text p{font-size:15px;line-height:1.62;}
+.ueber-generation .text p + p{margin-top:14px;}
+
+/* International und digital: schmale Textspalte, breites Motiv */
+.ueber-digital{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);
+  gap:clamp(24px,3vw,var(--rinne));align-items:center;
+  /* Text und Motiv bleiben über der Karte, die von unten heraufreicht */
+  position:relative;z-index:1;
+}
+.ueber-digital .bild,.ueber-digital .platz{aspect-ratio:1280/690;}
+.ueber-digital p{font-size:15px;line-height:1.62;}
+.ueber-digital p + p{margin-top:14px;}
+.ueber-abschnitt-titel{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(24px,3vw,38px);line-height:1.1;color:var(--text-stark);margin-bottom:20px;
+}
+.ueber-abschnitt-titel em{color:var(--rot);font-style:normal;}
+
+/* Zeitachse mit blätterbaren Jahren, Jahreszahl als Kontur */
+/* Die Zeitachse bleibt über der Karte, die von unten heraufreicht */
+.jahre{position:relative;z-index:1;padding:0 clamp(58px,6.2vw,96px);}
+.jahre .spur{
+  display:flex;gap:var(--rinne);overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none;
+}
+.jahre .spur::-webkit-scrollbar{display:none;}
+.jahre .halt{flex:0 0 calc((100% - 3*var(--rinne))/4);scroll-snap-align:start;}
+.jahre .jahr{
+  font-family:var(--font-h);font-weight:700;font-size:clamp(50px,6.2vw,82px);line-height:1;
+  color:transparent;-webkit-text-stroke:2.4px var(--tuerkis);letter-spacing:.01em;
+}
+.jahre .strich{height:1px;background:var(--rot);margin:16px 0 16px;}
+.jahre h4{
+  font-family:var(--font-h);font-weight:700;font-size:14px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--text-stark);line-height:1.3;margin-bottom:12px;
+}
+.jahre h4 em{color:var(--rot);font-style:normal;}
+.jahre p{font-size:14px;line-height:1.5;}
+/* Die Blätterknöpfe folgen dem Glas-Prinzip: milchige Scheibe, türkiser Rand,
+   grauer Schatten darunter, gleiche Bauart wie die Buttons der Seite */
+.jahre .knopf{
+  position:absolute;top:clamp(16px,2.6vw,32px);width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--tuerkis-hell);display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.55);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:var(--schein);
+  transition:border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.jahre .knopf:hover{
+  border-color:var(--tuerkis);background:var(--tuerkis);
+  box-shadow:0 6px 14px rgba(0,175,171,.28);
+}
+.jahre .knopf svg{width:24px;height:24px;stroke:var(--tuerkis);transition:stroke .2s ease;}
+.jahre .knopf:hover svg{stroke:var(--weiss);}
+.jahre .zurueck{left:0;}
+.jahre .vor{right:0;}
+
+/* Europäischer Partner: Text links, Karte läuft nach rechts aus */
+/* Text und Karte liegen in derselben Rasterzelle, die Karte läuft hinter dem Text
+   durch und ragt nach rechts über den Inhalt hinaus, wie in Jans Entwurf */
+.europa{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;}
+.europa .text{grid-area:1/1;z-index:1;max-width:min(29%,375px);}
+.europa p{font-size:15px;line-height:1.62;}
+.europa p + p{margin-top:14px;}
+.europa .karte{
+  grid-area:1/1;z-index:0;width:122%;margin-left:17%;
+  /* Die Karte reicht mit dem skandinavischen Teil hinter die Zeitachse
+     und bis unter das Motiv des Abschnitts International und digital */
+  margin-top:calc(-1 * clamp(140px,40vw,740px));
+}
+.europa .karte img{width:100%;height:auto;display:block;}
+.europa .schluss{
+  margin-top:22px;font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(17px,1.8vw,21px);line-height:1.35;color:var(--text-stark);
+}
+
+@media (max-width:1000px){
+  .ueber-oben{grid-template-columns:1fr 1fr;}
+  .ueber-oben .text{grid-column:1/3;grid-row:1;}
+  .ueber-oben .hoch-rechts{grid-column:1/3;grid-row:2;aspect-ratio:1280/620;min-height:0;}
+  .ueber-oben .b1{grid-column:1;grid-row:3;}
+  .ueber-oben .b2{grid-column:2;grid-row:3;}
+  .ueber-generation{grid-template-columns:1fr;}
+  .ueber-generation .hoch-links{grid-column:1;grid-row:2;aspect-ratio:1280/620;min-height:0;}
+  .ueber-generation .quer-oben{grid-column:1;grid-row:1;}
+  .ueber-generation .text{grid-column:1;grid-row:3;}
+  .ueber-digital{grid-template-columns:1fr;}
+  .wachsen-kopf{grid-template-columns:1fr;}
+  .europa .text{grid-area:1/1;max-width:100%;}
+  .europa .karte{grid-area:2/1;width:100%;margin-left:0;margin-top:clamp(24px,4vw,40px);}
+  .jahre .halt{flex-basis:calc((100% - var(--rinne))/2);}
+}
+@media (max-width:680px){
+  .jahre .halt{flex-basis:100%;}
+  .ueber-oben{grid-template-columns:1fr;}
+  .ueber-oben .text,.ueber-oben .hoch-rechts,.ueber-oben .b1,.ueber-oben .b2{grid-column:1;}
+  .ueber-oben .text{grid-row:1;} .ueber-oben .hoch-rechts{grid-row:2;}
+  .ueber-oben .b1{grid-row:3;} .ueber-oben .b2{grid-row:4;}
+}
+
+@media (max-width:1000px){
+  .wechsel{grid-template-columns:1fr;}
+  .wechsel.gedreht .spalte-bild{order:2;}
+  .fuehrung{grid-template-columns:1fr 1fr;}
+  .aufruf{grid-template-columns:1fr;}
+  .beleg .reihe{grid-template-columns:1fr;gap:18px;}
+  .schritte{grid-template-columns:1fr 1fr;}
+  .belege{grid-template-columns:1fr;}
+  .galerie{grid-template-columns:1fr;}
+}
+@media (max-width:680px){
+  .fuehrung{grid-template-columns:1fr;}
+  .schritte{grid-template-columns:1fr;}
+  .achse-text{grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;}
+  .achse-text .halt{padding:0 0 30px 36px;}
+  .achse-text .halt::before{top:0;bottom:0;left:8px;right:auto;width:2px;height:auto;}
+  .achse-text .halt:first-child::before{top:10px;left:8px;}
+  .achse-text .halt:last-child::before{bottom:auto;height:12px;}
+  .achse-text .halt::after{top:2px;left:0;}
+  .achse-text .jahr,.achse-text .was{text-align:left;}
+}
+
+/* ============================================================
+   Karriere, Texte aus Karriere.docx, Aufbau nach der Live-Seite
+   ============================================================ */
+
+/* ---------- Kopf des Stellenbereichs ---------- */
+/* Die Marke steht bewusst unter der Größe der Seitenüberschrift, damit oben
+   allein eine große Zeile trägt. Ihre Linie führt in die Liste hinein. */
+.stellen-kopf{
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  margin-top:clamp(30px,3.6vw,48px);padding-bottom:14px;
+  border-bottom:2px solid var(--tuerkis);
+}
+.stellen-kopf h2{
+  font-size:clamp(20px,2.3vw,28px);line-height:1.15;letter-spacing:.01em;
+  color:var(--rot);
+}
+.stellen-kopf .zahl{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:13px;letter-spacing:.14em;color:var(--tuerkis);
+}
+/* Nach dieser Marke beginnt die Liste ohne eigene Linie */
+.stellen-kopf + .stellen{margin-top:0;}
+.stellen-kopf + .stellen .stelle:first-child{border-top:0;}
+
+/* ---------- Offene Stellen als Akkordeon ---------- */
+/* Aufbau wie auf der bestehenden Seite: jede Stelle ist eine Zeile mit Linie,
+   der Titel steht bündig zur linken Textkante */
+.stellen{display:grid;margin-top:clamp(26px,3.2vw,40px);}
+.stelle{border-top:1px solid var(--linie);margin-bottom:16px;}
+.stelle:last-child{border-bottom:1px solid var(--linie);}
+/* Die Kopfzeile trägt den Titel und rechts den runden Schalter */
+.stelle .kopf{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:none;border:0;cursor:pointer;text-align:left;
+  padding:clamp(18px,2.2vw,24px) 0;
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;color:var(--text-stark);
+  font-size:clamp(15px,1.5vw,19px);line-height:1.25;
+  transition:color .25s ease;
+}
+.stelle .kopf:hover{color:var(--rot);}
+.stelle .titel{min-width:0;}
+.stelle .schalter{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--tuerkis-hell);
+  display:grid;place-items:center;transition:background .3s ease;
+}
+.stelle .kopf:hover .schalter{background:var(--tuerkis);}
+.stelle .schalter svg{width:18px;height:18px;stroke:var(--tuerkis);transition:stroke .3s ease,transform .4s cubic-bezier(.22,1,.36,1);}
+.stelle .kopf:hover .schalter svg{stroke:var(--weiss);}
+.stelle.offen .schalter svg{transform:rotate(45deg);}
+.stelle .feld{display:none;padding:0 0 clamp(24px,3vw,32px);}
+.stelle.offen .feld{display:block;}
+/* Metazeile im Muster der bestehenden Seite: Wert in Rot unter der Bezeichnung */
+.stelle .meta{
+  display:flex;flex-wrap:wrap;border-top:1px solid var(--linie);
+  padding-top:20px;margin-bottom:22px;
+}
+.stelle .meta div{
+  padding:4px 24px;border-right:1px solid var(--linie);
+  font-size:14px;line-height:1.4;
+}
+.stelle .meta div:first-child{padding-left:0;}
+.stelle .meta div:last-child{border-right:0;}
+.stelle .meta b{display:block;color:var(--rot);font-weight:700;font-size:15px;margin-top:3px;}
+.stelle .feld p{font-size:15px;line-height:1.6;max-width:78ch;}
+.stelle .feld p + p{margin-top:12px;}
+/* Zwischenüberschriften der Stellenbeschreibung, Wortlaut aus der Ausschreibung */
+.stelle .feld h4{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:14px;letter-spacing:.04em;color:var(--text-stark);
+  margin:22px 0 10px;
+}
+/* Aufzählungen mit türkisem Punkt, passend zu den Haken der Startseite */
+.stelle .feld .punkte{
+  list-style:none;margin:0;padding:0;display:grid;gap:9px;max-width:78ch;
+}
+.stelle .feld .punkte li{
+  position:relative;padding-left:22px;font-size:15px;line-height:1.55;
+}
+.stelle .feld .punkte li::before{
+  content:'';position:absolute;left:0;top:8px;width:8px;height:8px;
+  border-radius:50%;background:var(--tuerkis);
+}
+.stelle .feld .punkte b{color:var(--text-stark);font-weight:700;}
+.stelle .feld .btn-reihe{margin-top:26px;}
+
+/* ---------- Fachbereiche als Bildraster ---------- */
+.bereiche{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,26px);margin-top:clamp(30px,3.6vw,46px);}
+.bereiche figure{margin:0;}
+.bereiche .platz{aspect-ratio:4/3;}
+.bereiche figcaption{
+  margin-top:12px;font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:14px;letter-spacing:.03em;line-height:1.3;color:var(--text-stark);
+}
+
+/* ---------- Benefits mit Linien-Icons ---------- */
+.benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,30px);margin-top:clamp(30px,3.6vw,46px);}
+.benefits .gabe{
+  background:var(--weiss);border-radius:var(--r-bild);box-shadow:var(--schatten-weich);
+  padding:clamp(22px,2.6vw,30px) clamp(18px,2.2vw,26px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.benefits .gabe:hover{transform:translateY(-4px);box-shadow:var(--schein);}
+.benefits .zeichen{
+  width:64px;height:64px;border-radius:50%;background:var(--tuerkis-hell);
+  display:grid;place-items:center;
+}
+.benefits .zeichen svg{width:32px;height:32px;stroke:var(--tuerkis);fill:none;}
+.benefits .was{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:15px;line-height:1.3;letter-spacing:.03em;color:var(--text-stark);
+}
+
+/* ---------- Karriere: schmale Bildschirme ---------- */
+@media (max-width:1000px){
+  .bereiche{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .benefits{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stelle .meta div{padding:4px 18px;}
+}
+@media (max-width:680px){
+  .bereiche{grid-template-columns:1fr;}
+  .benefits{grid-template-columns:1fr;}
+  /* Die Metafelder stellen sich untereinander, jedes mit eigener Trennlinie */
+  .stelle .meta{display:grid;gap:0;}
+  .stelle .meta div{
+    padding:8px 0;border-right:0;border-bottom:1px solid var(--linie);
+    display:flex;justify-content:space-between;gap:16px;
+  }
+  .stelle .meta div:last-child{border-bottom:0;}
+  .stelle .meta b{margin-top:0;text-align:right;}
+}
+
+/* ---------- Abschlusskasten in Rot ---------- */
+.aufruf.rot{background:var(--rot);}
+.aufruf.rot h2 em{color:var(--weiss);opacity:.72;}
+.aufruf.rot p{color:rgba(255,255,255,.94);}
+/* Auf der roten Fläche tritt der zweite Weg als weiße Kontur auf, das hält ihn lesbar */
+.aufruf.rot .btn-bild{background:rgba(255,255,255,.14);box-shadow:none;}
+.aufruf.rot .btn-bild:hover{background:rgba(255,255,255,.26);}
+
+/* Aufruf mit Motiv: links Text und Weg, rechts das Foto */
+.aufruf.mit-bild{grid-template-columns:minmax(0,1fr) minmax(240px,360px);align-items:center;}
+@media (max-width:820px){
+  .aufruf.mit-bild{grid-template-columns:1fr;}
+  .aufruf.mit-bild .aufruf-bild{aspect-ratio:16/10;}
+}
