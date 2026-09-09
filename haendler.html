@@ -57,9 +57,12 @@
 
 <!-- ============ Seitenkopf ohne Bühne ============ -->
 <!-- Sämtliche Texte stehen im Wortlaut des Kundendokuments zusatzseite-NEU_FÜR HÄNDLER.docx vom 17.08.2026 -->
-<section class="seitenkopf rot">
+<section class="seitenkopf rot mit-motiv">
   <div class="wrap">
-    <div class="brot"><a href="index.html">Start</a> · Für Händler</div>
+   <!-- Die Brotkrume steht über dem Raster, damit Headline und Motiv auf einer Linie beginnen -->
+   <div class="brot"><a href="index.html">Start</a> · Für Händler</div>
+   <div class="kopf-raster flucht">
+   <div class="kopf-inhalt">
     <h1>DER PARTNER FÜR DEN SPORTIVEN <em>FAHRRADFACHHANDEL.</em></h1>
     <p class="lead stark">Mehr als 40 führende Performance-Marken. Digitale Lösungen, die Deinen Arbeitsalltag einfacher machen. Persönliche Betreuung in elf europäischen Märkten.</p>
     <p class="sek-intro" style="margin-top:18px;max-width:70ch;">Seit über 40 Jahren unterstützen wir Fachhändler dabei, erfolgreicher zu arbeiten: mit einem Sortiment, auf das sich Profis verlassen und einer Zusammenarbeit, die genauso professionell ist, wie unsere Marken.</p>
@@ -69,12 +72,24 @@
       <a class="btn btn-hell" href="#shop">Zum B2B-Shop
         <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
     </div>
+   </div>
+   <!-- Kurze Schleife im Einstieg. Hier läuft vorerst das Startseiten-Material,
+        das endgültige Motiv folgt aus der Bildauswahl. -->
+   <div class="kopf-motiv">
+     <video autoplay muted loop playsinline preload="metadata" poster="assets/banner/Startseiten-Banner-hell-poster.jpg">
+       <source src="assets/banner/Startseiten-Banner-hell.webm" type="video/webm">
+       <source src="assets/banner/Startseiten-Banner-hell-1280.mp4" type="video/mp4">
+     </video>
+   </div>
+   </div>
   </div>
 </section>
 
 <!-- ============ Markenband, gleiches Laufband wie auf der Startseite ============ -->
 <div class="markenband" aria-label="Marken im Portfolio">
+  <button class="knopf zurueck" type="button" aria-label="Marken nach links schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 7l-5 5 5 5"/></svg></button>
   <div class="laufband" id="laufband"></div>
+  <button class="knopf vor" type="button" aria-label="Marken nach rechts schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></button>
 </div>
 
 <!-- ============ Portfolio ============ -->
@@ -100,13 +115,13 @@
 <!-- ============ Distribution aus Sicht des Fachhandels ============ -->
 <section class="flaeche">
   <div class="wrap">
-    <div style="max-width:70ch;">
+    <div class="distribution-kopf">
       <h2>Gute Distribution macht den <em>Unterschied.</em></h2>
-      <p class="sek-intro" style="margin-top:20px;">Als Fachhändler möchtest Du Dich auf Deine Kunden konzentrieren. Genau dafür entwickeln wir Distribution konsequent aus Sicht des Fachhandels. Das spart Dir Zeit, schafft Transparenz und ermöglicht Dir, Dich voll auf Dein Business konzentrieren zu können.</p>
-      <p class="zitat" style="margin-top:26px;">
-        „So unterstützt Dich Sport Import im Alltag.“
-      </p>
+      <p class="sek-intro">Als Fachhändler möchtest Du Dich auf Deine Kunden konzentrieren. Genau dafür entwickeln wir Distribution konsequent aus Sicht des Fachhandels. Das spart Dir Zeit, schafft Transparenz und ermöglicht Dir, Dich voll auf Dein Business konzentrieren zu können.</p>
     </div>
+
+    <!-- Überschrift für die vier folgenden Blöcke, Wortlaut aus dem Kundendokument -->
+    <h3 class="alltag-titel">So unterstützt Dich Sport Import im Alltag.</h3>
 
     <div class="wechsel" style="margin-top:clamp(36px,4vw,58px);">
       <div>
@@ -182,6 +197,10 @@
       <div>
         <h2 style="font-size:clamp(24px,3vw,40px);">Händler werden – schnell, einfach und <em>digital.</em></h2>
         <p>Der Einstieg ist unkompliziert.</p>
+        <div class="btn-reihe" style="margin-top:clamp(22px,2.6vw,32px);">
+          <a class="btn btn-hell" href="#formular">Jetzt Händler werden
+            <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
+        </div>
       </div>
       <!-- Platzhalter für das Motiv, das an dieser Stelle einzieht -->
       <div class="platz aufruf-bild" style="aspect-ratio:1/1;">Motiv für den Einstieg, etwa der Empfang oder das Team im Innendienst</div>
@@ -204,11 +223,6 @@
         <div class="nr">4</div>
         <p>Ab jetzt kannst Du auf unser gesamtes Sortiment zugreifen und direkt über unseren B2B-Shop bestellen.</p>
       </div>
-    </div>
-
-    <div class="btn-reihe" style="margin-top:clamp(34px,4vw,52px);justify-content:center;">
-      <a class="btn btn-hell" href="#formular">Jetzt Händler werden
-        <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
     </div>
 
   </div>
@@ -261,6 +275,11 @@
     </div>
   </div>
 </footer>
+
+<!-- Mitfahrender Weg: fährt beim Scrollen von rechts ein und begleitet die Seite,
+     tritt ab, sobald der Abschluss mit demselben Weg im Blick ist -->
+<a class="mitfahrer btn btn-hell" href="#werden" id="mitfahrer">Jetzt Händler werden
+  <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
 
 <script src="assets/si.js"></script>
 </body>

@@ -83,18 +83,16 @@
   </a>
 </section>
 
-<!-- ============ Markenband ============ -->
-<div class="markenband" aria-label="Marken im Portfolio">
-  <div class="laufband" id="laufband"></div>
-</div>
-
 <!-- ============ 01 Wir sind Sport Import ============ -->
 <section id="ueber">
   <div class="wrap">
-    <h2 class="uns-titel">Wir sind <em>Sport Import</em></h2>
-
+    <!-- Aufbau nach Jans Entwurf: Headline über den ersten beiden Spalten,
+         rechtes Motiv reicht bis auf ihre Höhe, linkes Motiv läuft bis unter
+         die Kennzahlen, die rechts daneben stehen -->
     <div class="uns">
-      <div class="platz hoch">Team im Gespräch am Standort Edewecht</div>
+      <h2 class="uns-titel">Wir sind <em>Sport Import</em></h2>
+
+      <div class="platz bild-links">Team im Gespräch am Standort Edewecht</div>
 
       <div class="text">
         <p class="zwischen">Performance-Partner für Road, Gravel, Mountainbike und BMX.</p>
@@ -104,22 +102,29 @@
         </div>
       </div>
 
-      <div class="platz hoch">Kommissionierung im Zentrallager</div>
-    </div>
+      <div class="platz bild-rechts">Fahrer mit Rennrad vor dem Firmensitz</div>
 
-    <div class="zahlenband" id="zahlenband">
+      <div class="zahlenband" id="zahlenband">
       <div class="zahl"><div class="wert" data-ziel="35"><span class="ziffer">0</span><sup>+</sup></div><div class="was">Marken</div></div>
       <div class="zahl"><div class="wert" data-ziel="4700"><span class="ziffer">0</span><sup>+</sup></div><div class="was">Fachhändler</div></div>
       <div class="zahl"><div class="wert" data-ziel="80"><span class="ziffer">0</span><sup>+</sup></div><div class="was">Mitarbeitende</div></div>
       <div class="zahl"><div class="wert" data-ziel="40"><span class="ziffer">0</span><sup>+</sup></div><div class="was">Jahre Erfahrung</div></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============ Markenband, zwischen den beiden Abschnitten ============ -->
+<div class="markenband" aria-label="Marken im Portfolio">
+  <button class="knopf zurueck" type="button" aria-label="Marken nach links schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 7l-5 5 5 5"/></svg></button>
+  <div class="laufband" id="laufband"></div>
+  <button class="knopf vor" type="button" aria-label="Marken nach rechts schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></button>
+</div>
+
 <!-- ============ 02 Mit uns wachsen ============ -->
 <section class="band band-rot" id="marken">
   <div class="wrap">
-    <div class="wachsen-kopf">
+    <div class="wachsen-kopf flucht">
       <div class="wort">
       <h2>Mit uns <em>wachsen</em></h2>
       <p style="margin-top:18px;">Wir begleiten Marken langfristig und denken in Partnerschaften statt in Quartalen. Viele unserer Kernmarken arbeiten seit Jahrzehnten mit uns zusammen. Unsere Vertriebsstruktur ist europaweit aufgestellt. Vertrieb, Marketing und Category Management arbeiten dabei eng zusammen und verbinden Marktverständnis mit operativer Umsetzung. So schaffen wir eine Grundlage für gemeinsames Wachstum.</p>
@@ -130,31 +135,43 @@
     <!-- Die Markenkreise stehen gleich groß nebeneinander, darunter das Jahr -->
     <div class="achse" role="list" aria-label="Partnerschaften nach Jahren">
       <div class="halt" role="listitem" style="--i:0">
-        <div class="marke"><img src="assets/marken/rockshox.png" alt="RockShox"></div>
-        <div class="jahr">Seit 1992</div>
+        <div class="marke"><img src="assets/marken/odi.png" alt="ODI"></div>
+        <div class="jahr">Seit 1982</div>
       </div>
       <div class="halt" role="listitem" style="--i:1">
+        <div class="marke eng"><img src="assets/marken/rockshox.png" alt="RockShox"></div>
+        <div class="jahr">Seit 1992</div>
+      </div>
+      <div class="halt" role="listitem" style="--i:2">
         <div class="marke"><img src="assets/marken/sram.png" alt="SRAM"></div>
         <div class="jahr">Seit 2002</div>
       </div>
-      <div class="halt" role="listitem" style="--i:2">
-        <div class="marke"><img src="assets/marken/zipp.png" alt="Zipp"></div>
-        <div class="jahr">Seit 2002</div>
-      </div>
       <div class="halt" role="listitem" style="--i:3">
+        <div class="marke"><img src="assets/marken/zipp.png" alt="Zipp"></div>
+        <div class="jahr">Seit 2009</div>
+      </div>
+      <div class="halt" role="listitem" style="--i:4">
+        <div class="marke tief"><img src="assets/marken/lezyne.png" alt="Lezyne"></div>
+        <div class="jahr">Seit 2014</div>
+      </div>
+      <div class="halt" role="listitem" style="--i:5">
         <div class="marke"><img src="assets/marken/dynamic-bike-care.png" alt="Dynamic Bike Care"></div>
         <div class="jahr">Seit 2023</div>
       </div>
-      <div class="halt" role="listitem" style="--i:4">
+      <div class="halt" role="listitem" style="--i:6">
         <div class="marke"><img src="assets/marken/pirelli.png" alt="Pirelli"></div>
         <div class="jahr">Seit 2025</div>
       </div>
     </div>
 
+    <!-- Die Auszeichnung trägt den Abschluss des roten Bandes: Motiv links,
+         Titel als Überschrift, darunter der Satz aus Jans Entwurf und die beiden Wege -->
     <div class="wachsen-fuss">
+      <div class="award-bild platz">Pokal und Urkunde der Auszeichnung, Team bei der Übergabe</div>
       <div class="wort">
+      <p class="award-marke">Ausgezeichnet</p>
+      <h3 class="award-titel">SRAM &amp; Zipp <em>Distributor of the Year 2025</em></h3>
       <p>
-        <strong>SRAM &amp; Zipp Distributor of the Year 2025.</strong>
         Vertrieb, Marketing, PR, Category Management, Logistik und IT greifen bei uns ineinander
         und arbeiten als ein Team. So entwickeln wir jede Marke passend zu ihren Zielen und
         zu den Besonderheiten jedes Marktes.
@@ -173,8 +190,8 @@
 <!-- ============ 03 Starke Partnerschaft ============ -->
 <section class="band band-grau" id="haendler">
   <div class="wrap">
-    <div class="partner">
-      <div class="platz hoch" style="aspect-ratio:840/620;">Jessica im Gespräch beim Händler in Oldenburg</div>
+    <div class="partner flucht">
+      <div class="platz hoch">Jessica im Gespräch beim Händler in Oldenburg</div>
       <div>
         <h2>Starke <em>Partnerschaft</em></h2>
         <p class="sek-intro" style="margin-top:18px;">Gute Zusammenarbeit endet nicht beim Produkt. Deshalb bauen wir auf ein starkes Team, klare Prozesse und Tools, die den Alltag im Fachhandel wirklich einfacher machen.</p>
@@ -198,10 +215,10 @@
 <!-- ============ 04 Karriere ============ -->
 <section class="karriere" id="karriere">
   <div class="wrap">
+    <h2 class="karriere-titel">Werde Teil eines <em>Teams mit Antrieb</em></h2>
     <div class="platz">Team läuft vor dem Gebäude in Edewecht entlang</div>
     <div class="karte">
-      <h2 style="font-size:clamp(26px,3.4vw,44px);">Werde Teil eines <em>Teams mit Antrieb</em></h2>
-      <p style="margin-top:16px;font-size:17px;line-height:1.55;">Wer bei Sport Import arbeitet, bekommt Freiraum und die Möglichkeit, Dinge wirklich umzusetzen. Der Anspruch ist hoch. Gleichzeitig unterstützen wir uns gegenseitig und wollen gemeinsam vorankommen.</p>
+      <p style="font-size:17px;line-height:1.55;">Wer bei Sport Import arbeitet, bekommt Freiraum und die Möglichkeit, Dinge wirklich umzusetzen. Der Anspruch ist hoch. Gleichzeitig unterstützen wir uns gegenseitig und wollen gemeinsam vorankommen.</p>
       <div class="btn-reihe" style="margin-top:26px;">
         <a class="btn btn-hell" href="karriere.html">Erfahre mehr über uns <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
       </div>
@@ -217,8 +234,8 @@
         <h2><em>Aktuelles</em></h2>
         </div>
       <div class="zusatz">
-        <a class="link-pfeil" href="#aktuelles">Alle Beiträge anzeigen
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a>
+        <a class="btn btn-hell" href="#aktuelles">Alle Beiträge anzeigen
+          <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
       </div>
     </div>
 
@@ -226,7 +243,7 @@
       <article class="karte">
         <div class="platz standard">Glemmride, Sprung vor Bergkulisse</div>
         <div class="inhalt">
-          <div class="datum">9. bis 12. Juli 2026</div>
+          <time class="datum" datetime="2026-07-09">9. bis 12. Juli 2026</time>
           <h3>Glemmride Bike Festival Saalbach</h3>
           <p class="text">Vom 09. bis 12. Juli 2026 feiert das GlemmRide sein zehnjähriges Jubiläum. Das Saalbach Hinterglemm verwandelt…</p>
           <a class="btn btn-hell" href="#aktuelles">Weiterlesen <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
@@ -236,7 +253,7 @@
       <article class="karte">
         <div class="platz standard">OneTwenty Sonthofen, Sprint im Ziel</div>
         <div class="inhalt">
-          <div class="datum">12. bis 14. Juni 2026</div>
+          <time class="datum" datetime="2026-06-12">12. bis 14. Juni 2026</time>
           <h3>OneTwenty Sonthofen</h3>
           <p class="text">Vom 12. bis 14. Juni sind wir beim RAD RACE ONE TWENTY in Sonthofen vertreten. Das Event hat sich in…</p>
           <a class="btn btn-hell" href="#aktuelles">Weiterlesen <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
@@ -246,7 +263,7 @@
       <article class="karte">
         <div class="platz standard">Bike Festival Willingen, Stand am Kurs</div>
         <div class="inhalt">
-          <div class="datum">Rückblick</div>
+          <span class="datum">Rückblick</span>
           <h3>Bike Festival Willingen</h3>
           <p class="text">Das Bike Festival Willingen steht vor der Tür. Wir freuen uns auf ein Wochenende mit guten Gesprächen,…</p>
           <a class="btn btn-hell" href="#aktuelles">Weiterlesen <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>

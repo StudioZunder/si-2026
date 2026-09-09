@@ -57,34 +57,49 @@
 
 <!-- ============ Seitenkopf ohne Bühne ============ -->
 <!-- Sämtliche Texte stehen im Wortlaut des Kundendokuments zusatzseite_NEU_FÜR MARKEN.docx vom 17.08.2026 -->
-<section class="seitenkopf rot">
+<section class="seitenkopf rot mit-motiv">
   <div class="wrap">
-    <div class="brot"><a href="index.html">Start</a> · Für Marken</div>
+   <!-- Die Brotkrume steht über dem Raster, damit Headline und Motiv auf einer Linie beginnen -->
+   <div class="brot"><a href="index.html">Start</a> · Für Marken</div>
+   <div class="kopf-raster flucht">
+   <div class="kopf-inhalt">
     <h1>DEIN EUROPÄISCHER <em>DISTRIBUTIONSPARTNER.</em></h1>
     <p class="lead">Seit über 40 Jahren entwickeln wir Performance-Marken aus den Bereichen Road, Gravel, Mountainbike und BMX in Europa. Mit einem starken Händlernetzwerk, lokalen Teams und eingespielten Prozessen übernehmen wir die europäische Distribution – damit Du Dich auf Deine Marke konzentrieren kannst.</p>
     <div class="btn-reihe" style="margin-top:28px;">
       <a class="btn btn-hell" href="#anfrage">Vertriebspartnerschaft anfragen
         <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
     </div>
+   </div>
+   <!-- Kurze Schleife im Einstieg. Hier läuft vorerst das Startseiten-Material,
+        das endgültige Motiv folgt aus der Bildauswahl. -->
+   <div class="kopf-motiv">
+     <video autoplay muted loop playsinline preload="metadata" poster="assets/banner/Startseiten-Banner-hell-poster.jpg">
+       <source src="assets/banner/Startseiten-Banner-hell.webm" type="video/webm">
+       <source src="assets/banner/Startseiten-Banner-hell-1280.mp4" type="video/mp4">
+     </video>
+   </div>
+   </div>
   </div>
 </section>
 
 <!-- ============ Markenband, gleiches Laufband wie auf der Startseite ============ -->
 <div class="markenband" aria-label="Marken im Portfolio">
+  <button class="knopf zurueck" type="button" aria-label="Marken nach links schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 7l-5 5 5 5"/></svg></button>
   <div class="laufband" id="laufband"></div>
+  <button class="knopf vor" type="button" aria-label="Marken nach rechts schieben"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></button>
 </div>
 
 <!-- ============ Partner statt Distributor ============ -->
 <section>
   <div class="wrap">
-    <div class="wechsel">
+    <div class="wechsel flucht">
       <div>
-        <h2>Starke Marken suchen mehr als einen Distributor. Sie suchen einen Partner, der ihre Marke im Markt <em>entwickelt.</em></h2>
-        <p class="sek-intro" style="margin-top:20px;">Genau dafür ist Sport Import aufgebaut. Wir verbinden den Zugang zu einem der stärksten sportiven Händlernetzwerke Europas mit einer professionellen Organisation, kurzen Entscheidungswegen und einem Team, in dem Vertrieb, Marketing, Category Management, Logistik und IT nahtlos ineinandergreifen.</p>
+        <h2>Starke Marken suchen <em>mehr als einen Distributor.</em></h2>
+        <p class="sek-intro" style="margin-top:20px;">Sie suchen einen Partner, der ihre Marke im Markt entwickelt. Genau dafür ist Sport Import aufgebaut. Wir verbinden den Zugang zu einem der stärksten sportiven Händlernetzwerke Europas mit einer professionellen Organisation, kurzen Entscheidungswegen und einem Team, in dem Vertrieb, Marketing, Category Management, Logistik und IT nahtlos ineinandergreifen.</p>
         <p class="sek-intro" style="margin-top:16px;">Wir entwickeln gemeinsam die passende Strategie für Deine Marke und setzen sie konsequent in den europäischen Märkten um.</p>
       </div>
       <div class="spalte-bild">
-        <div class="platz" style="aspect-ratio:840/620;">Still aus dem Glemmride Content mit sichtbarer Markenpräsentation</div>
+        <div class="platz">Still aus dem Glemmride Content mit sichtbarer Markenpräsentation</div>
       </div>
     </div>
   </div>
@@ -109,7 +124,7 @@
 <!-- ============ Gemeinsam wachsen ============ -->
 <section>
   <div class="wrap">
-    <div style="max-width:70ch;">
+    <div class="voll-breit">
       <h2>Gemeinsam <em>wachsen.</em></h2>
       <p class="sek-intro" style="margin-top:20px;">Jede Marke ist anders. Deshalb entwickeln wir gemeinsam eine Strategie, die zu Deiner Marke, Deinen Zielen und den Besonderheiten jedes Marktes passt.</p>
       <p class="sek-intro" style="margin-top:16px;">Eine erfolgreiche Marktbearbeitung besteht aus vielen Bausteinen. Der Ausbau des Händlernetzes, Produkteinführungen, Marketing, PR, E-Commerce, Events oder verkaufsunterstützende Maßnahmen greifen je nach Marke und Markt unterschiedlich ineinander. Entscheidend ist, dass jede Maßnahme auf die Ziele Deiner Marke einzahlt.</p>
@@ -121,9 +136,7 @@
         <div class="platz" style="aspect-ratio:840/620;">Anja am Packtisch</div>
       </div>
       <div>
-        <p class="zitat">
-          „Die Einführung neuer Marken gehört seit Jahrzehnten zu unserem Geschäft. Heute rollen wir sie europaweit aus.“
-        </p>
+        <h3 class="alltag-titel" style="margin-top:0;">Die Einführung neuer Marken gehört seit Jahrzehnten zu unserem Geschäft. Heute rollen wir sie europaweit aus.</h3>
         <p style="margin-top:18px;font-size:17px;line-height:1.6;">So stellen wir sicher, dass Deine Marke in jedem Markt professionell entwickelt und vertreten wird.</p>
       </div>
     </div>
@@ -254,6 +267,11 @@
     </div>
   </div>
 </footer>
+
+<!-- Mitfahrender Weg: fährt beim Scrollen von rechts ein und begleitet die Seite,
+     tritt ab, sobald der Abschluss mit demselben Weg im Blick ist -->
+<a class="mitfahrer btn btn-hell" href="#anfrage" id="mitfahrer">Vertriebspartnerschaft anfragen
+  <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
 
 <script src="assets/si.js"></script>
 </body>

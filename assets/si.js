@@ -33,9 +33,44 @@ const marken = [
   ['cushcore','CushCore'],['odi','ODI'],['voxom','Voxom'],['7idp','7iDP']
 ];
 const band = document.getElementById('laufband');
-if (band) band.innerHTML = [...marken, ...marken].map(
-  ([datei, name]) => `<span class="logo-feld"><img src="assets/marken/${datei}.png" alt="${name}" loading="lazy"></span>`
-).join('');
+if (band) {
+  band.innerHTML = [...marken, ...marken].map(
+    ([datei, name]) => `<span class="logo-feld"><img src="assets/marken/${datei}.png" alt="${name}" loading="lazy"></span>`
+  ).join('');
+
+  /* Das Band zieht von selbst weiter und lässt sich zugleich mit den Pfeilen schieben.
+     Die Logos stehen doppelt, deshalb springt der Lauf bei der Hälfte lautlos zurück. */
+  const feld = band.closest('.markenband');
+  const zurueck = feld && feld.querySelector('.zurueck');
+  const vor = feld && feld.querySelector('.vor');
+  let ruht = false, zuletzt = 0;
+
+  const schiebe = richtung => {
+    ruht = true;
+    band.scrollBy({left: richtung * Math.round(band.clientWidth * .8), behavior:'smooth'});
+    clearTimeout(schiebe.uhr);
+    schiebe.uhr = setTimeout(() => { ruht = false; }, 2600);
+  };
+  if (zurueck) zurueck.addEventListener('click', () => schiebe(-1));
+  if (vor) vor.addEventListener('click', () => schiebe(1));
+  if (feld) {
+    feld.addEventListener('pointerenter', () => { ruht = true; });
+    feld.addEventListener('pointerleave', () => { ruht = false; });
+  }
+
+  const sanft = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const takt = jetzt => {
+    const schritt = zuletzt ? (jetzt - zuletzt) / 1000 : 0;
+    zuletzt = jetzt;
+    if (!ruht && schritt < .2) {
+      band.scrollLeft += 90 * schritt;
+      const halb = band.scrollWidth / 2;
+      if (band.scrollLeft >= halb) band.scrollLeft -= halb;
+    }
+    requestAnimationFrame(takt);
+  };
+  if (!sanft) requestAnimationFrame(takt);
+}
 
 /* Kennzahlen zählen von null auf ihren Wert, sobald sie ins Bild kommen */
 const formatiere = n => n.toLocaleString('de-DE');
@@ -77,6 +112,28 @@ if (achse) {
     });
   }, {threshold:.25});
   blick.observe(achse);
+}
+
+/* Der mitfahrende Weg erscheint nach dem ersten Bildschirm und tritt ab,
+   sobald der Abschluss mit demselben Angebot im Blick ist */
+const mitfahrer = document.getElementById('mitfahrer');
+if (mitfahrer) {
+  /* Der Abschluss ist das Ziel des Verweises, so trägt jede Seite ihren eigenen */
+  const ziel = (mitfahrer.getAttribute('href') || '').replace('#','');
+  const abschluss = ziel ? document.getElementById(ziel) : null;
+  let abschlussImBlick = false;
+  if (abschluss) {
+    new IntersectionObserver(eintraege => {
+      eintraege.forEach(e => { abschlussImBlick = e.isIntersecting; pruefe(); });
+    }, {threshold:.12}).observe(abschluss);
+  }
+  const pruefe = () => {
+    const weitGenug = window.scrollY > window.innerHeight * .55;
+    mitfahrer.classList.toggle('sichtbar', weitGenug && !abschlussImBlick);
+  };
+  window.addEventListener('scroll', pruefe, {passive:true});
+  window.addEventListener('resize', pruefe, {passive:true});
+  pruefe();
 }
 
 /* ---------- Zeitachse auf Über uns: blättern mit den Pfeilen ---------- */
