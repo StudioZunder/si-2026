@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marken · Sport Import · Prototyp Re-Brush 2026</title>
+<link rel="stylesheet" href="https://use.typekit.net/bes0eit.css">
+<link rel="stylesheet" href="assets/si.css">
+</head>
+<body>
+
+<!-- ============ Kopfleiste, auf Unterseiten dauerhaft hell ============ -->
+<header class="kopfleiste fest" id="kopfleiste">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Sport Import, zur Startseite">
+      <img class="weiss" src="assets/sport-import-logo_weiss.svg" alt="Sport Import">
+      <img class="farbig" src="assets/sport-import-logo.svg" alt="Sport Import">
+    </a>
+    <div class="sprachwahl">
+      <a href="#" class="an" lang="de">de</a>
+      <a href="#" lang="en">en</a>
+      <a href="#" lang="pl">pl</a>
+    </div>
+    <button class="menue-schalter" id="menueSchalter" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<!-- ============ Menüfläche ============ -->
+<nav class="menue" id="menue" aria-label="Hauptmenü">
+  <div class="inhalt">
+    <ul class="menue-liste">
+      <li><a href="index.html">Home <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="haendler.html">Für Händler <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="marken.html">Für Marken <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="https://b2b.sportimport.de/" target="_blank" rel="noopener">B2B Webshop <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="news.html">News <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="unsere-marken.html">Marken <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="karriere.html">Karriere <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="ueber-uns.html">Über uns <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="service.html">Service <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+      <li><a href="kontakt.html">Kontakt <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a></li>
+    </ul>
+    <div class="neben">
+      <h4>Sport Import GmbH</h4>
+      <p>
+        Industriestr. 39<br>26188 Edewecht<br>Deutschland<br><br>
+        Telefon +49 4405 9280 – 0<br>info@sportimport.de
+      </p>
+      <div class="sprachen">
+        <a href="#" class="an" lang="de">de</a>
+        <a href="#" lang="en">en</a>
+        <a href="#" lang="pl">pl</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ Seitenkopf ============ -->
+<!-- Überschrift, Gruppentitel, Markennamen, Unterzeilen und sämtliche Beschreibungstexte
+     stehen im Wortlaut der Bestandsseite https://www.sportimport.de/marken/,
+     abgerufen am 10.09.2026. Der Kopf läuft hell mit rotem Strich, so wie auf News. -->
+<section class="seitenkopf">
+  <div class="wrap">
+    <div class="brot"><a href="index.html">Start</a> · Marken</div>
+    <h1>MARKEN</h1>
+    <span class="strich"></span>
+  </div>
+</section>
+
+<!-- ============ Das Portfolio in zwei Gruppen ============ -->
+<!-- Jede Gruppe läuft über zwei Spalten, so wie die Bestandsseite.
+     Jede Zeile ist ein natives details-Element: links Logo und Unterzeile,
+     rechts das Zeichen, das beim Öffnen dreht. So klappt die Liste ohne Skript auf
+     und bleibt mit der Tastatur bedienbar. Die Spalten wachsen einzeln,
+     dadurch bleibt die Nachbarspalte beim Aufklappen ruhig.
+     Zweispaltig nach Ansage Tammo vom 10.09.2026. -->
+<section id="portfolio" style="padding-top:clamp(24px,2.8vw,40px);">
+  <div class="wrap">
+    <h2 class="marken-gruppe-titel">MTB. ROAD. URBAN. GRAVEL. E-BIKE.</h2>
+    <span class="strich"></span>
+    <div class="marken-spalten">
+      <div class="marken-liste">
+        <details class="marke" id="time-bicycles">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/time.png" alt="TIME Bicycles" loading="lazy"></span>
+            <span class="marke-sub">Unermüdlicher Fokus</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke TIME Bicycles</div>
+            <div class="marke-wort">
+              <h3>TIME Bicycles</h3>
+              <p>Seit 1987 setzt TIME Bicycles Maßstäbe in Technologie, Design und Innovation. Getreu dem Leitsatz Le Défi – The Challenge geht TIME konsequent den anspruchsvollen Weg. Die Marke gehört zu den wenigen weltweit, die ihre Carbonrahmen mit Braided Carbon Structure und Resin Transfer Molding fertigen. Diese in Luft- und Raumfahrt sowie Motorsport bewährten Verfahren sorgen für außergewöhnliche Festigkeit, Leichtigkeit und Stabilität – und machen TIME zu einem Vorreiter in der High-End-Fahrradproduktion. Alle Rahmen werden in Europa entwickelt und produziert, um höchste Qualität und Präzision zu gewährleisten.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="cema-3">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/cema.png" alt="CEMA" loading="lazy"></span>
+            <span class="marke-sub">Nur das Beste für jeden Fahrer</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke CEMA</div>
+            <div class="marke-wort">
+              <h3>CEMA</h3>
+              <p>CEMA steht für eine große Auswahl an hochqualitativen Lagern. Von Beginn an hat sich CEMA auf die Entwicklung und Produktion von Keramik-Lagern für den Radsport spezialisiert und wird so den hohen Ansprüchen, die Sportler an ihr Material stellen, gerecht. Zum umfangreichen Sortiment gehören u.a. Innenlager, Steuersatzlager, Schaltröllchen sowie passendes Werkzeug. CEMA Lager werden von verschiedenen professionellen Radsportteams verwendet, u.a. auch bei der UCI World Tour.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="pirelli-2">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/pirelli.png" alt="PIRELLI" loading="lazy"></span>
+            <span class="marke-sub">Power is nothing without control</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke PIRELLI</div>
+            <div class="marke-wort">
+              <h3>PIRELLI</h3>
+              <p>Pirelli Cycling ist der Geschäftsbereich von Pirelli, der sich ganz der Welt der Zweiräder widmet. Er verbindet jahrzehntelange Erfahrung in der Reifenindustrie mit innovativen Lösungen für Radfahrer. Das Unternehmen ist auf Reifen für Rennräder, Gravelbikes und MTBs spezialisiert und setzt dabei auf modernste Technologien und hochwertige Materialien. Das Ergebnis ist ein durchweg hohes Leistungsniveau. Das Sortiment umfasst Reifen, die auf allen Untergründen für Grip, Geschwindigkeit und Langlebigkeit sorgen – darunter auch der High-End-Reifen P Zero Race, der vollständig in Italien gefertigt wird und von den besten WorldTour-Teams gefahren wird. Pirellis Anspruch ist es, Radfahrer mit zuverlässigen, leistungsstarken Produkten zu unterstützen – gleichermaßen geeignet für Profis wie für ambitionierte Amateure. Jeder Reifen ist das Resultat kontinuierlicher Forschung und Ausdruck einer tiefen Leidenschaft für den Radsport. Picture credits @tornanti.cc</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="sram">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/sram.png" alt="SRAM" loading="lazy"></span>
+            <span class="marke-sub">Radkomponenten für die Radsportwelt</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke SRAM</div>
+            <div class="marke-wort">
+              <h3>SRAM</h3>
+              <p>Keine andere Marke des Radsportuniversums erschüttert das Radsport-Establishment so sehr mit technologischem Fortschritt, wie SRAM dies vermag. 1 x 12, TwentyTwo oder 1×11 – SRAM überdenkt Gewohntes und entdeckt das Außergewöhnliche und das Neue. Eagle, RED eTap, WiFli, Yaw, DoubleTap oder Hydro sind weitere Statements für das radikale Innovationsdenken von SRAM. Schon allein die reine Schalt-Performance macht einen erheblichen Unterschied. Gangwechsel unter Volllast, im gröbsten Gelände, bergauf und ohne dafür den Griff lockern zu müssen. Sport Import ist SRAM Distributor seit 2002.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="rock-shox-2">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/rockshox.png" alt="ROCK SHOX" loading="lazy"></span>
+            <span class="marke-sub">Federungssysteme – das Original</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke ROCK SHOX</div>
+            <div class="marke-wort">
+              <h3>ROCK SHOX</h3>
+              <p>1990 revolutionierte RockShox mit der RS-1 die Mountainbikewelt: Mit dieser Innovation begann der Siegeszug von Federungssystemen auf den Trails der Welt. Stahlfedern, Luft- und Ölsysteme, Materialien wie Magnesium, Aluminium, Kunststoffe oder Carbon – RockShox nutzte jede Möglichkeit, um Fahrradfederungen für Sport und Alltag effizient und wartungsarm zu gestalten. Dabei ist den Ingenieuren gelungen, Fahrkomfort, Servicefreundlichkeit, Haltbarkeit und natürlich Funktionalität in allen Produkten zu kombinieren. Sport Import ist RockShox Distributor seit 1992.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="lezyne">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/lezyne.png" alt="LEZYNE" loading="lazy"></span>
+            <span class="marke-sub">Design Zubehör für die Radwelt</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke LEZYNE</div>
+            <div class="marke-wort">
+              <h3>LEZYNE</h3>
+              <p>Die 2007 gegründete Zubehör Linie, die ihresgleichen sucht und bereits weltweit mit zahlreichen Awards ausgezeichnet wurde, steht für Engineered Design. Egal ob bei Multitools, Pumpen oder Beleuchtung - Lezyne bietet höchste Produktqualität aufgewertet durch einmaliges Design. Ein Team von Ingenieuren und Designern unter der Leitung von Micki Kozuscheck gewährleistet die beständig hohe Qualität aller Lezyne-Produkte. In der eigenen Produktionsstätte in Taichung, Taiwan, haben sie von der Produktion bis zur Qualität und Funktion der Bauteile alles vor Ort unter Kontrolle. Sport Import ist Lezyne Distributor seit 2014.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="wtb">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/wtb.png" alt="WTB" loading="lazy"></span>
+            <span class="marke-sub">MTB &amp; Gravel Komponenten - erfolgreich seit 1982</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke WTB</div>
+            <div class="marke-wort">
+              <h3>WTB</h3>
+              <p>WTB gehört zu den Pionieren der MTB Marken und wurde 1982 in Marin County/CA gegründet. Zur damaligen Zeit fehlte es an hochwertigem MTB Zubehör, weil MTBs Anfang der 80er Jahre eher zu den seltenen Skurrilitäten zählten, aber nicht zu etablierten Fahrradmodellen. Die drei Gründer, darunter Mark Slate, stellten sich dennoch der Herausforderung, haltbare Komponenten zu entwickeln. Mit Erfolg! Auch beim Thema Gravel zeigte WTB Mut und zählt somit heute zu den erfolgreichsten Marken in diesem Bereich. Sport Import ist WTB Distributor seit 2019.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="clif-bar">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/clif.png" alt="CLIF Bar" loading="lazy"></span>
+            <span class="marke-sub">Energie für jeden Sportlichen Moment</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke CLIF Bar</div>
+            <div class="marke-wort">
+              <h3>CLIF Bar</h3>
+              <p>Gary Erickson gründete 1992 seine Firma CLIF Bar und schenkte damit der Sportwelt einen leckeren und energiereichen Sportriegel. Nach zweijähriger Entwicklungszeit folgte die offizielle Firmengründung von CLIF Bar. Heute produziert CLIF Bar Riegel in diversen Geschmacksrichtungen und ist nach wie vor inhabergeführt. Die Qualität der Produkte überzeugt – mittlerweile ist CLIF Bar unter den Energieriegel-Lieferanten die Nr. 1 in Nordamerika und setzt bei der Produktion vorrangig Produkte aus Bio-Anbau ein.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="zipp">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/zipp.png" alt="ZIPP" loading="lazy"></span>
+            <span class="marke-sub">Macht dich schneller</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke ZIPP</div>
+            <div class="marke-wort">
+              <h3>ZIPP</h3>
+              <p>Zipp gehört zu den „most wanted brands“. Aufgebaut hat sich Zipp diesen Ruf durch die Fokussierung auf die vier Kernqualitäten eines perfekten Laufrades: Aerodynamik, Steifigkeit, Haltbarkeit und Gewicht. Je nach Einsatzwunsch zieht Zipp eine Spezialwaffe aus dem Köcher: Für Zeitfahren und Ironman-Distanzen, winklige Bergabfahrten, Gravel-Abenteuer sowie steile Trail-Abfahrten. Um den optimalen Qualitätsmix zu generieren, mussten Experten unzählige Stunden in Windkanälen, Material-Laboren und natürlich auf der Straße und im Gelände verbringen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="mahle">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/mahle.png" alt="MAHLE SmartBike Systems" loading="lazy"></span>
+            <span class="marke-sub">epowered by MAHLE</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke MAHLE SmartBike Systems</div>
+            <div class="marke-wort">
+              <h3>MAHLE SmartBike Systems</h3>
+              <p>MAHLE SmartBike Systems stellt Komponenten und Systeme für einige der innovativsten eBikes der Welt her. Die Fahrradsparte von Mahle mit Hauptsitz in Palencia, Spanien, entwickelt Hardware- und Softwarelösungen für eBike-Hersteller, Händler und Fahrer. Die innovativen Lösungen des MAHLE SmartBike Systems werden durch einen kontinuierlichen Dialog zwischen den Fahrradmarken, Händlern und Fahrern bestimmt.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="ht-components">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/ht-components.png" alt="HT COMPONENTS" loading="lazy"></span>
+            <span class="marke-sub">Pedal to the medal</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke HT COMPONENTS</div>
+            <div class="marke-wort">
+              <h3>HT COMPONENTS</h3>
+              <p>HT ist eine High-End-Pedalmarke und wurde 2005 als Tochter der Firma HT Components INC gegründet. Das Unternehmen verfügt über mehr als 50 Jahre Erfahrung in der Entwicklung und Herstellung von Komponenten. Genau richtig, um den heutigen Anforderungen der wachsenden Nachfrage gerecht zu werden. HT setzt dabei nicht nur auf neueste Technologien, sondern auch auf ausgefallene Designs. Durch die Konzentration auf die Entwicklung leistungsstarker Pedale ermöglicht die Marke, um CEO TC Yang, Spitzenathleten ihre Grenzen zu erweitern und Amateuren zu helfen, ihr volles Potenzial auszuschöpfen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="ambit-components">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/ambit.png" alt="AMBIT COMPONENTS" loading="lazy"></span>
+            <span class="marke-sub">Engineered with the ultimate riding experience in mind</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke AMBIT COMPONENTS</div>
+            <div class="marke-wort">
+              <h3>AMBIT COMPONENTS</h3>
+              <p>“EVERYTHING WE CREATE IS CRAFTED WITH THE UNRIVALED RIDING EXPERIENCE IN MIND.” Dieser Gedanke treibt Ambit Components an und er fließt in jedes einzelne Teil, das sie auf die Trails bringen. Von der Idee und erstem Konzept über den Prototypen bis hin zum finalen Produkt – alles mit dem Ziel, dein Fahrerlebnis auf das nächste Level zu bringen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="time">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/time.png" alt="TIME Sport" loading="lazy"></span>
+            <span class="marke-sub">Clipless Pedale der SRAM Gruppe - für Road &amp; MTB</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke TIME Sport</div>
+            <div class="marke-wort">
+              <h3>TIME Sport</h3>
+              <p>Das Ziel von TIME Sport: Die besten Pedale der Welt herzustellen. Durch Passform, Funktion und Performance. Bei TIME Pedale dreht sich alles um den Fahrkomfort. Mit den TIME-Pedale können Fahrer die Schmerzen beseitigen, die sie vorher hatten, ohne Kompromisse bei der Leistung eingehen zu müssen. Dieser Vorteil ergibt sich aus den verschiedenen Spielräumen, der Einstellung der Federspannung und den spezifischen Technologien. Das ist der große Vorteil, den TIME bietet. TIME Sport ist eine Marke der SRAM Gruppe.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="redshift">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/redshift.png" alt="REDSHIFT" loading="lazy"></span>
+            <span class="marke-sub">Unlock adventure</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke REDSHIFT</div>
+            <div class="marke-wort">
+              <h3>REDSHIFT</h3>
+              <p>Redshift Sports wurde 2013 von einem Team aus radsportbegeisterten Maschinenbauingenieuren gegründet. Von Beginn an liegt der Fokus darauf, Komponenten zu entwickeln, die das Fahrerlebnis spürbar komfortabler machen. Das Entwicklerteam bringt dabei umfangreiche Erfahrungen aus den verschiedensten Bereichen mit. Dieses Know-How nutzte Redshift, um die aktuelle Produktlinie (u.a. der beliebte ShockStop Vorbau) auf den Markt zu bringen. Alle Redshift Produkte werden in Philadelphia entwickelt, getestet und von Hand zusammengebaut. Produktqualität und Kundenservice stehen dabei an erster Stelle.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="marken-liste">
+        <details class="marke" id="reverse-components">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/reverse.png" alt="REVERSE Components" loading="lazy"></span>
+            <span class="marke-sub">United in Shred</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke REVERSE Components</div>
+            <div class="marke-wort">
+              <h3>REVERSE Components</h3>
+              <p>Aktiv im Mountainbike-Sport sind die beiden Eigentümer Heike und Peter Schmid von REVERSE Components seit den 90er Jahren. Angetrieben aus dieser Leidenschaft, entstehen REVERSE Produkte nicht nur am Schreibtisch, sondern direkt auf dem Trail. Immer auf der Suche nach neuen Lösungen und Entwicklungen, stehen dabei Funktionalität und Sicherheit an erster Stelle. Die Produkte werden deshalb umfassend auf Trails, aber auch im EFBE-Labor getestet. Denn wir sind „United in Shred“.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="uswe">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/uswe.png" alt="USWE" loading="lazy"></span>
+            <span class="marke-sub">Kein dancing Monkey!</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke USWE</div>
+            <div class="marke-wort">
+              <h3>USWE</h3>
+              <p>Die wackelfreien Action-Rucksäcke mit dem perfekten Sitz auf jeder Abfahrt. Die Mission von USWE ist es seit Tag eins Rucksäcke für alle Abenteuer zu entwickeln, die eng am Fahrer sitzen und auch bei den widrigsten Bedingungen beinahe unbemerkt wie eine zweite Haut am Rücken liegen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="cush-core">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/cushcore.png" alt="CushCore" loading="lazy"></span>
+            <span class="marke-sub">Engineered Tire Inserts</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke CushCore</div>
+            <div class="marke-wort">
+              <h3>CushCore</h3>
+              <p>Vom Anfänger bis zum Weltmeister können alle Fahrer von dem Vertrauen profitieren, das sie beim Fahren mit CushCore gewinnen: Schnelleres, ruhigeres Fahrverhalten, verbesserte Traktion, hervorragende Kurvenlage, zuverlässiger Felgen- und Reifenschutz.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="fist">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/fist.png" alt="FIST" loading="lazy"></span>
+            <span class="marke-sub">Erstklassige Statement-Handschuhe</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke FIST</div>
+            <div class="marke-wort">
+              <h3>FIST</h3>
+              <p>Handschuhe müssen nicht immer langweilig oder schwarz sein. Die australische Marke FIST Handwear beweist, dass Handschuhe mit Burgern, Donuts, Hunden oder Palmen zu einem echten Hingucker werden können. Neben den auffälligen Designs besticht FIST durch eine perfekte Passform, die sich an jede Hand schmiegt. Das japanische Obermaterial und das vegane Clarino™-Leder sind qualitativ hochwertig verarbeitet, um lange Freude an dem Handschuh zu garantieren.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="odi">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/odi.png" alt="ODI" loading="lazy"></span>
+            <span class="marke-sub">Der beste Griff</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke ODI</div>
+            <div class="marke-wort">
+              <h3>ODI</h3>
+              <p>ODI ist die #1 im Bereich BMX, MTB und Moto-X Griffe! Dies wird seit Jahren durch eine der weltweit größten Leserumfragen auf vitalbmx.com bestätigt. Diesen Erfolg hat ODI seiner langen Erfahrung zu verdanken, denn seit 1983 konzentriert sich ODI auf die Herstellung von Griffen. Von Anfang an produzierte ODI in einer eigenen Fabrik in Riverside, Kalifornien. Dort werden die Griffe entworfen, produziert und getestet, es werden beste Materialien verwendet und mittlerweile werden Reste nicht entsorgt, sondern immer und immer wieder recycelt und erneut verarbeitet.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="scuvvers">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/scuvvers.png" alt="Scuvvers" loading="lazy"></span>
+            <span class="marke-sub">Auto-Sitzbezüge für aktive Menschen</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke Scuvvers</div>
+            <div class="marke-wort">
+              <h3>Scuvvers</h3>
+              <p>Scuvvers ist ein faltbarer Sitzbezug für aktive Menschen, die ihre Autositze vor Schmutz, Schweiß, Sand, Wasser und Sonnenschutzmittel schützen wollen. Scuvvers ist die innovative und faltbare Lösung, mit der die Sitze nicht permanent abgedeckt sein müssen. Erfunden in Australien von einer echten innovativen Outdoor-Liebhaber Familie.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="dynamic-bike-care">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/dynamic-bike-care.png" alt="DYNAMIC Bike Care" loading="lazy"></span>
+            <span class="marke-sub">Fahrradpflegeprodukte für Profis</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke DYNAMIC Bike Care</div>
+            <div class="marke-wort">
+              <h3>DYNAMIC Bike Care</h3>
+              <p>Dynamic Bike Care – eine seit über 30 Jahren existierende Marke – steht seit Anfang 2020 auf eigenen Beinen. Gegründet in den 80er Jahren und einst Teil eines deutschen Vertriebsunternehmens in der Fahrradindustrie, bauen die neuen Inhaber von Dynamic auf ein großes Erbe. Umgeben von Wissenschaftlern, technischen Labors und professionellen Radsportteams, in Kombination mit einer lebendigen und inspirierenden Start-Up-Atmosphäre, werden heute neue, noch leistungsfähigere Produkte entwickelt, um das Beste aus jeder Fahrt herauszuholen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="chimpanzee">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/chimpanzee.png" alt="CHIMPANZEE" loading="lazy"></span>
+            <span class="marke-sub">Hochwertige Sportnahrung. Vegan, glutenfrei und lecker.</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke CHIMPANZEE</div>
+            <div class="marke-wort">
+              <h3>CHIMPANZEE</h3>
+              <p>Chimpanzee Nutrition steht für erstklassige Nahrungsergänzung für Sportler und Abenteurer. Mit Chimpanzee wird eine optimale Versorgung auf Radtouren, Bikepacking-Trips, Marathons und Wanderungen gewährleistet. Alle Produkte werden in Europa aus erlesenen Zutaten produziert und kommen ohne künstliche Zusatzstoffe und Gentechnik aus.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="voxom">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/voxom.png" alt="VOXOM" loading="lazy"></span>
+            <span class="marke-sub">Ehrliche Qualität, Funktion und Haltbarkeit zu einem fairen Preis.</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke VOXOM</div>
+            <div class="marke-wort">
+              <h3>VOXOM</h3>
+              <p>Genau das bieten wir mit VOXOM – Das Zubehör. Über 400 Artikel finden sich in unserem Portfolio, z.B. Schlösser, Beleuchtung, Werkzeuge, Bremsbeläge, Pedale oder Werkstattbedarf um nur einige zu nennen. Seit vielen Jahren entwickeln wir unser Sortiment stetig weiter und mit über 35 Jahren Erfahrung in der Fahrradbranche wissen wir, worauf es ankommt.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="7idp">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/7idp.png" alt="7iDP" loading="lazy"></span>
+            <span class="marke-sub">Leicht, perfekter Sitz und hoher Tragekomfort</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke 7iDP</div>
+            <div class="marke-wort">
+              <h3>7iDP</h3>
+              <p>7iDP hat sich den Schutz für Biker auf die Fahnen geschrieben. Die Entwicklung von Helmen, Protektoren und Schutzbekleidung wird dabei von vielen namhaften Fahrern unterstützt, um die Produkte auf alle Bedürfnisse anzupassen. Daher sind die Protektoren durch den perfekten Sitz und das leichte Gewicht beim Fahren kaum spürbar.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="avid">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/avid.png" alt="AVID" loading="lazy"></span>
+            <span class="marke-sub">Bremsenspezialist</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke AVID</div>
+            <div class="marke-wort">
+              <h3>AVID</h3>
+              <p>Seit 1991 steht Avid auf der Radsport-Bühne und erntete zunehmend Beifall für seine innovativen und ergonomischen Produkte. Ein Spezialist wie Avid kontrolliert alle Bausteine seines Systems, vom Bremshebel bis hin zu Bremsbelag und Bremsscheibe für unterschiedliche Bedingungen und Systeme, und kann so immer für die Sicherheit der Sportler garantieren. Wer die Verantwortung für Sicherheit so perfekt und racetauglich umsetzt, ist nicht umsonst an der Spitze.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="truvativ">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/truvativ.png" alt="TRUVATIV" loading="lazy"></span>
+            <span class="marke-sub">Premium MTB-Produkte</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke TRUVATIV</div>
+            <div class="marke-wort">
+              <h3>TRUVATIV</h3>
+              <p>Hochbelastbare Mountainbike-Komponenten sind das Spezialgebiet von Truvativ. Bauteile wie Sattelstütze, Lenker und Vorbau von Truvativ gelten unter Insidern, genau wie Kurbeln und Innenlager, als unverwüstlich. Profis testen, was engagierten Sportlern das beste und sicherste Fahrgefühl vermitteln soll. Truvativ steht für ausgereifte Produkte, die auch unter härtesten Bedingungen treu ihren Dienst tun.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="hammerhead">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/hammerhead.png" alt="Hammerhead" loading="lazy"></span>
+            <span class="marke-sub">Mach jede Fahrt besser als die letzte</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke Hammerhead</div>
+            <div class="marke-wort">
+              <h3>Hammerhead</h3>
+              <p>Hammerhead ist ein Technologieunternehmen, das es sich zur Aufgabe gemacht hat, alle Menschen zu inspirieren und dabei zu unterstützen, ihr sportliches Potenzial durch Radfahren zu entfalten. Der Karoo Radcomputer von Hammerhead lässt Dich Radfahren so erleben, wie es sein sollte, denn er ist einer der intuitivsten und fortschrittlichsten Radcomputer der Welt. Sieh, was für Dich am wichtigsten ist, mit der besten Routenplanung und Visualisierung seiner Klasse. Einfache Bedienung und Anpassung - Hole Dir all die Funktionen, die Du Dir wünschst, ganz ohne Komplexität. Erweiterte Konnektivität mit Deinen Lieblingsgeräten und -Apps, damit Du so fahren kannst, wie Du willst. Hammerhead ist Teil der SRAM LLC.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="gripgrab-de">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/gripgrab.png" alt="GripGrab" loading="lazy"></span>
+            <span class="marke-sub">Ride all year</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke GripGrab</div>
+            <div class="marke-wort">
+              <h3>GripGrab</h3>
+              <p>Jeden Morgen gibt es irgendwo auf der Welt einen Gripster, der aus dem Fenster schaut, die Wetterbedingungen prüft, sich anzieht und sich auf sein Fahrrad schwingt - aber anstatt direkt zur Arbeit zu fahren, macht er einen Abstecher und verwandelt seinen klassischen Arbeitsweg in einen wunderbaren Ausflug in das zauberhafte Morgenlicht. Mit diesem Gedanken im Hinterkopf entwickelt GripGrab Produkte, die vor allen Wetterbedingungen schützen. GripGrab ist ein Familienunternehmen. Es wurde im Jahr 2000 von den Brüdern Kristian, Martin und Bjørn Krøyer gegründet.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Die zweite Gruppe steht auf heller Fläche, dadurch trennen sich die beiden
+     Bereiche klar voneinander. Ansage Tammo, 10.09.2026 -->
+<section class="flaeche" id="portfolio-bmx">
+  <div class="wrap">
+    <h2 class="marken-gruppe-titel">BMX.</h2>
+    <span class="strich"></span>
+    <div class="marken-spalten">
+      <div class="marken-liste">
+        <details class="marke" id="wtp">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/wethepeople.png" alt="WETHEPEOPLE" loading="lazy"></span>
+            <span class="marke-sub">BMX designed in Germany</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke WETHEPEOPLE</div>
+            <div class="marke-wort">
+              <h3>WETHEPEOPLE</h3>
+              <p>Gegründet 1996, haben es die Kölner Jungs und Mädels von WETHEPEOPLE mittlerweile zu einer internationalen BMX-Größe geschafft und 2016 sogar die Awards für die „Best Brand“ bei der VitalBMX und FreedomBMX Leserumfrage abgeräumt – das hat bisher noch kein europäischer BMX-Hersteller geschafft! Dabei steht WETHEPEOPLE für Qualität „Designed in Germany“: Die Produkte, Teile und Kompletträder von WETHEPEOPLE sind durchweg im High-End Bereich angesiedelt und gehen absolut keine Kompromisse ein.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="sunday">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/sunday.png" alt="Sunday" loading="lazy"></span>
+            <span class="marke-sub">Awesome BMX Company</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke Sunday</div>
+            <div class="marke-wort">
+              <h3>Sunday</h3>
+              <p>„You have chosen wisely“ lautet der selbstbewusste Slogan von Sunday Bikes. Zu Recht, denn seit der Markteinführung 2005 ist Sunday eine der erfolgreichsten BMX-Firmen im Teile-Bereich und bei Kompletträdern. Sunday Bikes steht für absolute Leidenschaft im BMX-Sport – denn hier werden Räder von und für BMXer gemacht. Gegründet von dem Street Pionier Jim Cielencki und mitentwickelt von weiteren Profi-Fahrern, kann sich Sunday seit mittlerweile über 10 Jahren in der BMX-Szene beweisen und gilt mit seinen Innovationen als Vorreiter in Sachen BMX.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="si-bmx">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/si-bmx.png" alt="SI-BMX" loading="lazy"></span>
+            <span class="marke-sub">BMX-Räder für den einfachen Einstieg</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke SI-BMX</div>
+            <div class="marke-wort">
+              <h3>SI-BMX</h3>
+              <p>SIBMX ist wie es der Name vermuten lässt unsere Eigenmarke. In erster Linie möchten wir mit diesen Rädern den BMX-Neulingen den Einstieg versüßen und erleichtern. Gerade im Einstiegsbereich werden oft Räder angeboten, die vielleicht gut aussehen, aber überhaupt nicht BMX-tauglich sind. Wir blenden nicht mit gut klingenden Produktmerkmalen sondern konzentrieren uns bei den Rädern auf die wichtigen Dinge! Außerdem kann man sich bei unseren Rädern sicher sein, dass es Ersatzteile gibt und diese auch passen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="space-brace">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/space-brace.png" alt="SPACE BRACE" loading="lazy"></span>
+            <span class="marke-sub">Optimale Protektoren vor, während und nach einer Verletzung</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke SPACE BRACE</div>
+            <div class="marke-wort">
+              <h3>SPACE BRACE</h3>
+              <p>Die Geschichte von Space Brace beginnt mit einer Knöchelverletzung des Gründers und BMX-Profis Mike Gray. Alle gängigen Produkte halfen ihm nicht und so nutzte er die erzwungene Auszeit, um eine eigene Lösung zu entwickeln. Es entstand die erste Kombination aus einem herkömmlichen Knöchelschoner und einer orthopädischen Fußstütze. Viele seiner namhaften BMX-Freunde unterstützen ihn bei der Entwicklung und dem Testen der Produkte. Eine Marke von Fahrern für Fahrer!</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="dk">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/dk.png" alt="DK" loading="lazy"></span>
+            <span class="marke-sub">DK-BMX since 1979</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke DK</div>
+            <div class="marke-wort">
+              <h3>DK</h3>
+              <p>1979 begann alles in Ohio, USA: Bill Danishek verbog ständig seinen BMX-Vorbau, bis sein Vater, Charlie, der als Werkzeugmacher arbeitete, einen eigenen Vorbau herstellte! Dieser Vorbau war viel stabiler und in den 80er Jahren der Vorbau im BMX Race Bereich! Auch in Deutschland sah man diesen Vorbau fast an jedem Rad! Heute spiegelt sich die langjährige Erfahrung in den Produkten von DK wider.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="verde">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/verde.png" alt="VERDE" loading="lazy"></span>
+            <span class="marke-sub">Simple. Clean. Classic.</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke VERDE</div>
+            <div class="marke-wort">
+              <h3>VERDE</h3>
+              <p>Verde wurde 2007 von Steve Buddendeck mit der Absicht gegründet, klassische aber gut funktionierende BMX Räder zu schaffen. Mit viel Liebe fürs Detail aber einem sauberen Design gelang ihm der Sprung zu einer sehr angesehenen BMX Marke. Bei Verde gab und gibt es kein Rad ohne industrie-gelagerte Naben, die Rahmen sind gut durchdacht und sind spezieller als das klassische Design vermuten lässt! Optisch mussten die Räder schon immer ein Blickfang sein, das schafft man durch wirklich gut ausgewählte Farben..., rideverde!</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="fiend-2">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/fiend.png" alt="FIEND" loading="lazy"></span>
+            <span class="marke-sub">Die Street Company</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke FIEND</div>
+            <div class="marke-wort">
+              <h3>FIEND</h3>
+              <p>Fiend = 100% Street! Was auch kein Wunder ist, denn einer der Gründer und Chefs hört auf den Namen Garrett Reynolds! Kein anderer Fahrer verkörpert BMX-Street so wie Garrett und das schon seit Jahrzehnten. Und das spiegelt sich in seinen Produkten wider. Neben Garrett sind aber noch andere Street-Kanonen im Team: Ty Morrow, JJ Palmere, Colin Varanyak, Augie Simoncini und Lewis Mills, um nur die erste Garde zu nennen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="fairdale">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/fairdale.png" alt="FAIRDALE" loading="lazy"></span>
+            <span class="marke-sub">Eine kleine Bike-Schmiede aus Kalifornien</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke FAIRDALE</div>
+            <div class="marke-wort">
+              <h3>FAIRDALE</h3>
+              <p>Fairdale - Stahlräder aus Leidenschaft! Zuverlässigkeit, einfache Instandsetzung und keine Abstriche beim Fahrspaß sind die Key Points von Fairdale. Designed von der BMX Legende Taj Mihelich hat Fairdale alles vom BMX-Cruiser bis zum Gravel-Bike im Programm.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="marken-liste">
+        <details class="marke" id="demolition-parts">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/demolition.png" alt="DEMOLITION PARTS" loading="lazy"></span>
+            <span class="marke-sub">designed by riders for riders</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke DEMOLITION PARTS</div>
+            <div class="marke-wort">
+              <h3>DEMOLITION PARTS</h3>
+              <p>Demolition wurde im Jahr 2000 von der Street Legende Brian Castillo gegründet. Seine Freunde und ersten Team Fahrer waren Jason Enns und Kris Bennett, mit denen er auch die ersten Teile entwickelte, die ihren hohen Ansprüchen entsprachen. Seit Beginn von Demolition lautete das Motto: „designed from riders for riders“. Heute sind es Fahrer wie Dennis Enarson, Mike „Hucker“ Clark oder Kevin Peraza, die Demolition weltweit präsentieren und bei der Entwicklung der Produkte helfen!</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="g-sports">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/gsport.png" alt="GSPORTS" loading="lazy"></span>
+            <span class="marke-sub">Der BMX Laufrad Spezialist</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke GSPORTS</div>
+            <div class="marke-wort">
+              <h3>GSPORTS</h3>
+              <p>GSport ist DER Spezialist für BMX in Sachen Laufräder. Der Name steht für super technische Naben, innovative Speichennippel und fast unzerstörbare Felgenringe.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="odyssey">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/odyssey.png" alt="ODYSSEY" loading="lazy"></span>
+            <span class="marke-sub">High Quality BMX Parts</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke ODYSSEY</div>
+            <div class="marke-wort">
+              <h3>ODYSSEY</h3>
+              <p>Odyssey hat nichts mit griechischer Mythologie zu tun, wenngleich der Erfolg sagenhaft ist. Die Erfolgsgeschichte des BMX Teile Herstellers begann 1985 in Kalifornien. Seitdem hat Odyssey es immer wieder geschafft, mit neuen Innovationen die Maßstäbe in der BMX Welt neu zu definieren: das Gyro-Rotor System, die 41 Thermal Produkte, die Hazard Lite Felge und der Elementary Vorbau – um nur ein paar zu nennen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="heresy">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/heresy.png" alt="HERESY" loading="lazy"></span>
+            <span class="marke-sub">Flat is not dead</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke HERESY</div>
+            <div class="marke-wort">
+              <h3>HERESY</h3>
+              <p>Eine richtige BMX-Company besteht aus waschechten BMXern – so auch Heresy. Wie bei fast jeder Gründungsstory einer BMX-Firma fängt es auch hier damit an, dass eines Abends ein paar BMXer nach einer ausgiebigen BMX-Session zusammensaßen. So geschehen bei Alexis Desolneux, Michael Husser and Sebastian Grubinger 2009 in Wien, als sie ihrem Frust mit den bisherigen Sponsoren freien Lauf ließen. Seit 2010 produziert Heresy im kleinen Kreis hochwertige BMX-Rahmen, -Gabeln, -Lenker und -Teile. Genau das Richtige für alle Flatlander da draußen.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="volume-bikes">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/volume.png" alt="VOLUME BIKES" loading="lazy"></span>
+            <span class="marke-sub">Built to ride</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke VOLUME BIKES</div>
+            <div class="marke-wort">
+              <h3>VOLUME BIKES</h3>
+              <p>Volume ist seit 1999 fester Bestandteil der BMX-Szene und gilt damit als eines der ältesten BMX-Unternehmen. Mit BMX-Legende Brian Castillo als Kopf, bringt Volume durch seine langjährige Erfahrung jede Menge Fingerspitzengefühl in die Entwicklung von hochwertigen und robusten BMX-Produkten. Volume gehört seit Anbeginn zu den wegweisenden Unternehmen, die den Sport immer wieder aufs Neue geformt haben. Hier wird das Motto „Gemacht von BMXern für BMXer“ wirklich gelebt – denn nur das, was den eigenen Ansprüchen genügt, geht auch in Produktion.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="bsd">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/bsd.png" alt="BSD" loading="lazy"></span>
+            <span class="marke-sub">Komplettes Sortiment an hochwertigen BMX-Teilen</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke BSD</div>
+            <div class="marke-wort">
+              <h3>BSD</h3>
+              <p>1991 fing alles mit dem Dreh eines Videos an und 1998 kam das erste Produkt auf den Markt, ein 44T Kettenblatt aus 10mm dicken Aluminium! Mitgründer und Inhaber Grant Smith war und ist gelernter Baumaschinen Ingenieur, der natürlich ein hohes Fachwissen mitbringt und dies spiegelt sich in allen BSD Teilen wider.</p>
+            </div>
+          </div>
+        </details>
+        <details class="marke" id="fitbike-co">
+          <summary>
+            <span class="marke-logo"><img src="assets/marken/fitbikeco.png" alt="FitBike Co." loading="lazy"></span>
+            <span class="marke-sub">BMX Räder designt und entwickelt in Kalifornien</span>
+            <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </summary>
+          <div class="marke-inhalt">
+            <div class="platz standard marke-motiv">Motiv zur Marke FitBike Co.</div>
+            <div class="marke-wort">
+              <h3>FitBike Co.</h3>
+              <p>FitBikeCo. ist eine amerikanische BMX Marke aus Kalifonien und einer der Mitgründer ist kein geringerer als Chris Möller von S&amp;M BMX! Bei den Rädern und Teilen wird sehr hoher Wert auf Qualität, Funktion und Design gelegt, was leicht zu erkennen ist.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Abschluss: die beiden Aufrufe ============ -->
+<!-- Sie schließen die Seite ab und stehen waagerecht nebeneinander auf einer Grundlinie.
+     Ansage Tammo, 10.09.2026. Die mitlaufenden Wege springen hierher. -->
+<section class="marken-abschluss">
+  <div class="wrap">
+    <div class="marken-liste ruf-paar">
+      <details class="marke marke-ruf" id="wo-ist-deine-marke">
+        <summary>
+          <span class="ruf-wort">
+          <span class="ruf-titel">WO IST DEINE MARKE?</span>
+          <span class="ruf-sub">Nimm vertraulich Kontakt zu unserer Geschäftsleitung auf</span>
+          </span>
+          <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="marke-inhalt">
+          <p>Deine starke Marke aus der Fahrrad-Branche sucht einen kompetenten und schlagkräftigen Distributor? Wir haben mehr als 40 Jahre Erfahrung als Vertrieb für Fahrradzubehör, Fahrradteile und Kompletträder.</p>
+          <p>Mit unserem Team bieten wir Dir aber viel mehr als nur eine europäische Vertriebsstruktur. Zu unserem Gesamtpaket zählen zudem eine zentrale Lagerhaltung am eigenen Standort, kompetenter Service sowie Sichtbarkeit für die Marke durch Category Management und Marketing. Und immer der persönliche Kontakt, der für uns im Business entscheidend ist.</p>
+          <p>Du hast Interesse? Nimm vertraulich Kontakt zu unserer Geschäftsleitung auf.</p>
+          <p class="ruf-weg">E-Mail: <a href="mailto:lieferantenanfrage@sportimport.de">lieferantenanfrage@sportimport.de</a></p>
+        </div>
+        </details>
+      <details class="marke marke-ruf" id="jetzt-haendler-werden">
+        <summary>
+          <span class="ruf-wort">
+          <span class="ruf-titel">JETZT HÄNDLER WERDEN!</span>
+          <span class="ruf-sub">Registriere Dich jetzt für Deinen Zugang zum B2B Shop</span>
+          </span>
+          <span class="marke-zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="marke-inhalt">
+          <p>Unsere Marken haben Dich überzeugt? Unsere hohe Lieferfähigkeit, das Know-How unseres Vertriebs-Teams und unsere innovativen Order Tools werden Dich nicht enttäuschen.</p>
+          <p>Werde einer von über 3.500 Händlern in ganz Europa und registriere Dich jetzt für unseren B2B Shop – schnell einfach und digital.</p>
+          <div class="btn-reihe ruf-reihe">
+            <a class="btn btn-bild" href="https://b2b.sportimport.de/" target="_blank" rel="noopener">Zum B2B Shop <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
+            <a class="btn btn-bild" href="haendler.html">Alles für Händler <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
+          </div>
+        </div>
+        </details>
+    </div>
+  </div>
+</section>
+
+<!-- Die beiden Wege fahren nach dem ersten Bildschirm rechts ein und springen
+     auf die Aufklapper am Ende der ersten Gruppe, so wie auf der Bestandsseite. -->
+<div class="mitfahrer-gruppe" id="mitfahrerGruppe">
+  <a class="mitfahrer btn btn-hell" href="#jetzt-haendler-werden">Jetzt Händler werden
+    <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
+  <a class="mitfahrer btn btn-hell" href="#wo-ist-deine-marke">Wo ist Deine Marke?
+    <span class="kreis"><svg class="pfeil" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span></a>
+</div>
+
+<!-- ============ Fuß ============ -->
+<footer>
+  <div class="rad-feld"><img class="rad" src="assets/sportimport-rad-footer.png" alt="" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="marke">
+      <img src="assets/sport-import-logo.svg" alt="Sport Import">
+    </div>
+
+    <div class="spalten">
+
+      <ul class="kontakt">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span>Industriestr. 39<br>26188 Edewecht<br>Germany</span>
+        </li>
+        <li>
+          <a href="tel:+49440592800">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4z"/></svg>
+            <span>+49 4405 9280 – 0</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:info@sportimport.de">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.6 6.4 8.4 6 8.4-6"/></svg>
+            <span>info@sportimport.de</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="wege">
+        <li><a href="https://b2b.sportimport.de/" target="_blank" rel="noopener">B2B Webshop</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="karriere.html">Karriere</a></li>
+        <li><a href="index.html#marken">Marken</a></li>
+        <li><a href="index.html#service">Service</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+
+      <div class="recht">
+        <p><a href="#impressum">Impressum</a></p>
+        <p><a href="#datenschutz">Datenschutzhinweise</a></p>
+        <p><button type="button">Cookies</button></p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="assets/si.js"></script>
+</body>
+</html>

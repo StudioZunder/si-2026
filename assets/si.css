@@ -463,6 +463,338 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 .news .text{font-size:15px;line-height:1.5;margin-bottom:22px;}
 .news .karte .btn{margin-top:auto;align-self:flex-start;}
 
+/* ---------- News-Seite ---------- */
+/* Das Raster der Startseite trägt hier alle Beiträge. Auf der Startseite hält
+   die Platzhalterfläche den Platz, auf der News-Seite stehen die Motive der
+   Bestandsseite, deshalb gilt dasselbe Format für .bild */
+.news .karte .bild{aspect-ratio:400/262;}
+/* Der Weg zu den weiteren Beiträgen steht mittig unter dem Raster */
+.btn-reihe.weitere{justify-content:center;margin-top:clamp(38px,4.4vw,62px);}
+/* Ein Weg, dessen Ziel noch aussteht, ruht gedämpft, so wie die Menüpunkte */
+.btn.ruhend{opacity:.4;cursor:default;box-shadow:none;}
+.btn.ruhend:hover{opacity:.4;transform:none;}
+
+/* ---------- Beitrag, Einzelansicht ---------- */
+/* Ansage Tammo, 10.09.2026: die Seite steigt ohne Kopfblock ein. Motiv und Text
+   teilen sich die Breite zur Hälfte, dafür trägt der Block .wechsel bereits das
+   Raster und .flucht lässt das Motiv die Höhe des Textes annehmen.
+   Der Abstand zur festen Kopfleiste steht hier am Abschnitt selbst. */
+.beitrag-einstieg{padding-top:calc(88px + clamp(30px,3.6vw,52px));}
+/* Der Weg zurück steht über dem Datum und folgt dem Muster der Brotkrume */
+.beitrag-text .zurueck-weg{
+  display:inline-block;font-family:var(--font-h);font-weight:700;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text);margin-bottom:20px;transition:color .25s ease;
+}
+.beitrag-text .zurueck-weg:hover{color:var(--rot);}
+.beitrag-text .datum{
+  display:block;font-family:var(--font-h);font-weight:700;font-size:12px;
+  letter-spacing:.14em;color:var(--tuerkis);margin-bottom:12px;
+}
+.beitrag-text h1{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  color:var(--text-stark);font-size:clamp(26px,3.4vw,44px);line-height:1.08;
+  margin-bottom:24px;
+}
+.beitrag-text p{font-size:17px;line-height:1.6;}
+.beitrag-text p + p{margin-top:16px;}
+/* Die Vorlage hebt Marken und Orte fett hervor, der Wortlaut trägt sie mit */
+.beitrag-text strong{color:var(--text-stark);font-weight:700;}
+
+/* ---------- Markenübersicht ---------- */
+/* Aufbau nach der Bestandsseite: zwei Gruppen, darin je Marke eine Zeile, die
+   aufklappt. Jede Zeile ist ein natives details-Element, dadurch klappt sie ohne
+   Skript auf und bleibt mit der Tastatur bedienbar. */
+.marken-gruppe-titel{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  /* Ansage Tammo, 10.09.2026: die Gruppentitel laufen in Rot und um die Hälfte größer */
+  font-size:clamp(26px,2.9vw,35px);letter-spacing:.02em;color:var(--rot);
+  margin-bottom:clamp(22px,2.4vw,32px);
+}
+/* Der Strich unter dem Gruppentitel führt die Linie der Seitenköpfe fort */
+.marken-gruppe-titel + .strich{margin-top:0;margin-bottom:clamp(24px,2.8vw,38px);}
+.marken-gruppe-titel{margin-bottom:14px;}
+/* Zwei Spalten je Gruppe, so wie auf der Bestandsseite. Jede Spalte wächst einzeln,
+   dadurch bleibt die Nachbarspalte beim Aufklappen ruhig stehen. */
+.marken-spalten{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(30px,4vw,var(--rinne));align-items:start;
+}
+.marken-liste{border-top:1px solid var(--linie);}
+/* Der Selektor bleibt an die Liste gebunden: .marke trägt auch das Fußlogo
+   und die Markenkreise der Zeitachse auf der Startseite */
+.marken-liste .marke{border-bottom:1px solid var(--linie);}
+/* Links das Logo, daneben die Unterzeile, rechts das Zeichen */
+.marken-liste .marke summary{
+  display:grid;grid-template-columns:clamp(96px,9vw,132px) minmax(0,1fr) 38px;
+  align-items:center;gap:clamp(14px,1.8vw,24px);
+  padding:clamp(14px,1.6vw,20px) 0;cursor:pointer;list-style:none;
+  transition:background .25s ease;
+}
+.marken-liste .marke summary::-webkit-details-marker{display:none;}
+/* Der Zeigezustand gilt allein den Markenzeilen. Die roten Aufruf-Karten bleiben
+   davon frei. Ansage Tammo, 10.09.2026 */
+.marken-liste .marke:not(.marke-ruf) summary:hover{background:rgba(0,175,171,.05);}
+.marken-liste .marke summary:focus-visible{outline:2px solid var(--tuerkis);outline-offset:2px;}
+/* Jedes Logo bekommt dasselbe Feld über die volle Spaltenbreite, damit alle Zeilen
+   auf einer Flucht laufen. Das Motiv sitzt linksbündig darin und behält sein
+   Seitenverhältnis. Ansage Tammo, 10.09.2026: gleiche Breite für alle Felder */
+.marke-logo{display:flex;align-items:center;width:100%;height:clamp(38px,3.8vw,50px);}
+.marke-logo img{width:100%;height:100%;object-fit:contain;object-position:left center;}
+/* Steht kein Logo bereit, trägt der Name die Stelle */
+.marke-name-kopf{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:15px;color:var(--text-stark);
+}
+.marke-sub{font-size:clamp(14px,1.5vw,17px);line-height:1.4;color:var(--text);}
+.marke-zeichen{
+  justify-self:end;display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:var(--r-pill);
+  border:1px solid var(--linie);background:var(--weiss);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .25s ease;
+}
+.marke-zeichen svg{width:18px;height:18px;stroke:var(--tuerkis);}
+.marken-liste .marke[open] .marke-zeichen{transform:rotate(180deg);border-color:var(--tuerkis);}
+.marken-liste .marke:not(.marke-ruf) summary:hover .marke-zeichen{border-color:var(--tuerkis);}
+/* Der Text steht eingerückt unter der Zeile, auf einer Flucht mit der Unterzeile */
+/* Aufgeklappt steht links das Motiv der Marke, rechts der Text. Das Motiv sitzt
+   dabei unter dem Logo, der Text unter der Unterzeile, dadurch bleibt die Flucht
+   der Zeile erhalten. Ansage Tammo, 10.09.2026 */
+.marke-inhalt{
+  padding:0 0 clamp(22px,2.6vw,34px);
+  display:grid;grid-template-columns:clamp(120px,15vw,200px) minmax(0,1fr);
+  gap:clamp(16px,2vw,26px);align-items:start;
+}
+.marke-motiv{width:100%;}
+.marke-wort{max-width:70ch;}
+.marke-inhalt h3{
+  font-size:clamp(17px,1.9vw,22px);margin-bottom:12px;color:var(--text-stark);
+}
+.marke-inhalt p{font-size:16px;line-height:1.6;}
+/* Die beiden Aufrufe am Ende jeder Gruppe stehen als rote Karte, damit sie sich
+   klar von den Markenzeilen abheben. Die Überschrift trägt den oberen Bereich,
+   darunter steht die Zeile mit dem Weg. Ansage Tammo, 10.09.2026.
+   Eigene Klasse, damit die dunkle Fläche des Abschluss-Bausteins .aufruf ruht. */
+.marken-liste .marke.marke-ruf{
+  /* Reines Markenrot statt Verlauf. Ansage Tammo, 10.09.2026 */
+  background:var(--rot);
+  border-radius:var(--r-bild);border-bottom:0;overflow:hidden;
+  margin-top:clamp(22px,2.6vw,34px);box-shadow:var(--schatten-bild);
+}
+.marken-liste .marke-ruf summary{
+  grid-template-columns:minmax(0,1fr) 38px;align-items:start;
+  padding:clamp(22px,2.6vw,32px);gap:clamp(16px,2vw,26px);
+}
+.marken-liste .marke-ruf summary:focus-visible{outline-color:var(--weiss);outline-offset:-4px;}
+.ruf-titel{
+  display:block;font-family:var(--font-h);font-weight:700;text-transform:uppercase;
+  font-size:clamp(21px,2.5vw,32px);line-height:1.1;color:var(--weiss);
+}
+.ruf-sub{
+  display:block;margin-top:12px;
+  font-size:clamp(15px,1.6vw,18px);line-height:1.45;color:rgba(255,255,255,.9);
+}
+.marken-liste .marke-ruf .marke-zeichen{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5);}
+.marken-liste .marke-ruf .marke-zeichen svg{stroke:var(--weiss);}
+.marken-liste .marke-ruf[open] .marke-zeichen{border-color:var(--weiss);}
+/* Die rote Karte trägt allein Text, das Zweispalten-Raster der Markenzeile ruht dort */
+.marken-liste .marke-ruf .marke-inhalt{
+  display:block;margin-left:0;max-width:none;
+  padding:0 clamp(22px,2.6vw,32px) clamp(24px,2.8vw,32px);
+}
+.marken-liste .marke-ruf .marke-inhalt p{color:rgba(255,255,255,.94);}
+.marken-liste .marke-ruf .marke-inhalt p + p{margin-top:14px;}
+/* Die E-Mail steht als eigene Zeile am Schluss und lässt sich anklicken */
+.marken-liste .marke-ruf .ruf-weg{margin-top:20px;font-weight:700;}
+.marken-liste .marke-ruf .ruf-weg a{
+  color:var(--weiss);text-decoration:underline;text-underline-offset:3px;
+  transition:opacity .25s ease;
+}
+.marken-liste .marke-ruf .ruf-weg a:hover{opacity:.78;}
+/* Die Wege in der Karte laufen als Glas über der roten Fläche */
+.marken-liste .marke-ruf .ruf-reihe{margin-top:24px;}
+.marken-liste .marke-ruf .btn-bild{background:rgba(255,255,255,.16);box-shadow:none;}
+.marken-liste .marke-ruf .btn-bild:hover{background:rgba(255,255,255,.3);}
+
+/* Die beiden Aufrufe schließen die Seite ab: waagerecht nebeneinander, gleich hoch,
+   dadurch stehen sie oben wie unten auf einer Linie. Ansage Tammo, 10.09.2026 */
+.marken-abschluss{padding-top:clamp(44px,5vw,74px);}
+.ruf-paar{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(20px,2.6vw,32px);align-items:stretch;border-top:0;
+}
+.ruf-paar .marke.marke-ruf{margin-top:0;display:flex;flex-direction:column;}
+.ruf-paar .marke.marke-ruf .marke-inhalt{flex:1 1 auto;}
+@media (max-width:900px){
+  .ruf-paar{grid-template-columns:1fr;}
+}
+
+/* ---------- Kontakt ---------- */
+/* Die drei Wege ins Haus stehen als gleich hohe Karten nebeneinander */
+.kontakt-karten{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(20px,2.6vw,var(--rinne));align-items:stretch;
+}
+.kontakt-karte{
+  background:var(--weiss);border:1px solid var(--linie);border-radius:var(--r-bild);
+  padding:clamp(24px,2.8vw,34px);box-shadow:var(--schatten-weich);
+  display:flex;flex-direction:column;
+}
+.kontakt-karte h2{
+  font-size:clamp(19px,2.1vw,25px);color:var(--rot);margin-bottom:20px;
+}
+.kontakt-karte dl{margin:0;}
+.kontakt-karte dt{
+  font-family:var(--font-h);font-weight:700;font-size:13px;letter-spacing:.06em;
+  color:var(--text-stark);margin-top:18px;
+}
+.kontakt-karte dt:first-child{margin-top:0;}
+.kontakt-karte dd{margin:6px 0 0;font-size:15px;line-height:1.55;}
+.kontakt-karte a{color:var(--tuerkis-dunkel);}
+.kontakt-karte a:hover{color:var(--rot);}
+
+/* Das Formular steht rechts, die Anrede daneben */
+.formular-raster{
+  display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  gap:clamp(28px,4vw,var(--rinne));align-items:start;
+}
+.formular-wort h2{font-size:clamp(21px,2.4vw,30px);}
+.formular{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(14px,1.8vw,22px);margin:0;
+}
+.feld{display:flex;flex-direction:column;gap:8px;margin:0;}
+.feld-breit{grid-column:1/-1;}
+.feld label{
+  font-family:var(--font-h);font-weight:700;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-stark);
+}
+.feld input[type="text"],.feld input[type="email"],.feld input[type="tel"],
+.feld select,.feld textarea{
+  font-family:var(--font-t);font-size:16px;color:var(--text-stark);
+  background:var(--weiss);border:1px solid var(--linie);border-radius:var(--r-bild);
+  padding:13px 16px;width:100%;
+  transition:border-color .25s ease,box-shadow .25s ease;
+}
+.feld textarea{resize:vertical;min-height:150px;line-height:1.55;}
+.feld input:focus,.feld select:focus,.feld textarea:focus{
+  outline:none;border-color:var(--tuerkis);box-shadow:0 0 0 3px rgba(0,175,171,.16);
+}
+/* Der Haken steht neben seiner Zeile, die Beschriftung läuft daneben weiter */
+.feld.haken{flex-direction:row;align-items:flex-start;gap:12px;}
+.feld.haken input{width:20px;height:20px;margin-top:2px;accent-color:var(--tuerkis);}
+.feld.haken label{
+  font-family:var(--font-t);font-weight:400;font-size:15px;line-height:1.5;
+  letter-spacing:0;text-transform:none;color:var(--text);
+}
+.feld.haken a{color:var(--tuerkis-dunkel);text-decoration:underline;}
+.formular .btn-reihe{margin-top:6px;}
+.formular button.btn{font:inherit;cursor:pointer;}
+
+/* Anfahrt: Adresse links, Lageplan daneben */
+.anfahrt-wort h2{font-size:clamp(21px,2.4vw,30px);}
+.anfahrt-wort address{
+  font-style:normal;font-size:17px;line-height:1.6;margin-top:24px;color:var(--text-stark);
+}
+.anfahrt-wege{margin:24px 0 0;}
+.anfahrt-wege dt{
+  font-family:var(--font-h);font-weight:700;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tuerkis);margin-top:16px;
+}
+.anfahrt-wege dt:first-child{margin-top:0;}
+.anfahrt-wege dd{margin:5px 0 0;font-size:16px;}
+.anfahrt-wege a{color:var(--text-stark);}
+.anfahrt-wege a:hover{color:var(--rot);}
+
+@media (max-width:1000px){
+  .kontakt-karten{grid-template-columns:1fr;}
+  .formular-raster{grid-template-columns:1fr;}
+}
+@media (max-width:680px){
+  .formular{grid-template-columns:1fr;}
+}
+
+/* ---------- Service ---------- */
+/* Die vier Eckdaten stehen als gleich hohe Karten nebeneinander */
+.service-eckdaten{
+  display:grid;
+  /* Die beiden Karten mit einer Mailadresse bekommen etwas mehr Breite,
+     damit die Adresse in einer Zeile steht */
+  grid-template-columns:.94fr 1.02fr 1.02fr 1.02fr;
+  gap:clamp(16px,2vw,28px);align-items:stretch;
+}
+.service-eckdaten .kontakt-karte{padding:clamp(20px,2.2vw,28px);}
+.service-eckdaten .kontakt-karte p{font-size:15px;line-height:1.6;}
+.service-eckdaten .kontakt-karte p + p{margin-top:16px;}
+.service-eckdaten .kontakt-karte strong{color:var(--text-stark);}
+/* Die Überschrift läuft schmaler, damit ein Wort wie Endverbraucher-Service
+   innerhalb der Karte umbricht statt über ihre Kante zu laufen */
+.service-eckdaten .kontakt-karte h2{
+  font-size:clamp(14px,1.35vw,17px);letter-spacing:.02em;line-height:1.25;
+  overflow-wrap:anywhere;hyphens:auto;margin-bottom:16px;
+}
+/* Trägt die Karte einen einzelnen Wert, steht er groß und führt die Fläche.
+   Ansage Tammo, 10.09.2026: die Angaben wirkten sonst verloren */
+/* Der Inhalt steht mittig in der Karte, dadurch trägt die Fläche ihn statt ihn
+   am oberen Rand hängen zu lassen. Die Höhe gibt die Karte mit den Zeiten vor */
+.service-eckdaten .wert-gross{justify-content:center;}
+.service-eckdaten .wert-gross h2{margin-bottom:12px;}
+.service-eckdaten .wert-gross p{
+  font-family:var(--font-h);font-weight:700;
+  font-size:clamp(15px,1.55vw,20px);line-height:1.35;
+  overflow-wrap:anywhere;
+}
+/* Die Angaben laufen in der Bedienfarbe, so wie die Wege der übrigen Karten.
+   Ansage Tammo, 10.09.2026 */
+.service-eckdaten .wert-gross p a{color:var(--tuerkis-dunkel);}
+.service-eckdaten .wert-gross p a:hover{color:var(--rot);}
+/* Die Liste im Schritt steht eingerückt unter ihrem Satz */
+.schritt-liste{margin:14px 0 0;padding-left:18px;list-style:disc;}
+.schritt-liste li{font-size:14px;line-height:1.5;margin-top:7px;}
+
+@media (max-width:1000px){
+  .service-eckdaten{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:680px){
+  .service-eckdaten{grid-template-columns:1fr;}
+}
+
+/* Zwei mitfahrende Wege untereinander. Der Container hält die Lage, das Einfahren
+   von rechts bleibt beim einzelnen Weg, so wie auf Händler und Marken. */
+.mitfahrer-gruppe{
+  position:fixed;right:clamp(16px,2vw,32px);bottom:clamp(20px,3vh,40px);z-index:60;
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+.mitfahrer-gruppe .mitfahrer{position:static;right:auto;bottom:auto;}
+
+@media (max-width:900px){
+  /* Untereinander gestapelt läuft jede Gruppe wieder einspaltig */
+  .marken-spalten{grid-template-columns:1fr;}
+  .marken-spalten .marken-liste + .marken-liste{border-top:0;}
+}
+@media (max-width:760px){
+  /* Auf schmalen Bildschirmen steht das Logo über der Unterzeile */
+  .marken-liste .marke summary{grid-template-columns:minmax(0,1fr) 38px;gap:12px 16px;}
+  .marke-inhalt{grid-template-columns:1fr;}
+  .marke-motiv{max-width:280px;}
+  .marke-logo{width:100%;max-width:190px;height:34px;}
+  /* Die rote Aufruf-Karte trägt schon von Haus aus zwei Spalten, ihr Zeichen
+     bleibt deshalb in der ersten Zeile stehen */
+  .marken-liste .marke-ruf .marke-zeichen{grid-row:1;}
+  .marke-logo{grid-column:1;height:34px;}
+  .marke-sub{grid-column:1;}
+  .marke-zeichen{grid-column:2;grid-row:1/3;align-self:center;}
+  .marke-inhalt{margin-left:0;}
+  .mitfahrer-gruppe{left:var(--rand);right:var(--rand);align-items:stretch;}
+}
+/* Das Keyvisual trägt Schrift im Bild. Deshalb steht es hier in seinem eigenen
+   Format und schließt oben mit dem Text ab, statt auf dessen Höhe zu wachsen.
+   Die Gestaltungslinie der bündigen Kanten greift, wo das Motiv frei beschnitten
+   werden darf, hier würde sie Titel und Datum im Bild abschneiden. */
+.beitrag-einstieg .wechsel{align-items:start;}
+.beitrag-einstieg .bild,
+.beitrag-einstieg .platz{aspect-ratio:1536/1005;}
+
 /* ---------- 06 Servicecenter ---------- */
 .service{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(28px,4vw,var(--rinne));align-items:center;}
 .service .marken-liste{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px;}
@@ -633,6 +965,13 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
   font-size:clamp(30px,4.6vw,59px);line-height:1.07;max-width:20ch;
 }
 .seitenkopf h1 em{color:var(--rot);font-style:normal;}
+/* Ein kurzer roter Strich unter der Überschrift setzt die Marke, wo die Seite
+   mit einer hellen Fläche auskommt. Gewählt für News am 10.09.2026, steht für
+   Marken, Service und Kontakt gleich bereit. */
+.strich{
+  display:block;width:72px;height:5px;border-radius:3px;
+  background:var(--rot);margin-top:20px;
+}
 /* Der Lead kann fett auftreten, wenn er die Kernaussage der Seite trägt */
 .seitenkopf .lead.stark{font-weight:700;}
 .seitenkopf .lead{
@@ -684,11 +1023,11 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
   .mitfahrer{left:var(--rand);right:var(--rand);justify-content:center;}
 }
 
-/* Seitenkopf auf voller roter Fläche, die Schrift tritt darauf in Weiß auf */
-/* Der Verlauf folgt dem Signet: Winkel 82,8 Grad, Primärrot bei 20 Prozent,
-   Sekundärrot bei 80 Prozent. In CSS zählt der Winkel ab Norden, daraus wird 7,2 Grad. */
+/* Seitenkopf auf voller roter Fläche, die Schrift tritt darauf in Weiß auf.
+   Reines Markenrot, so wie alle roten Flächen der Website.
+   Ansage Tammo, 10.09.2026: der Verlauf des Signets entfällt hier. */
 .seitenkopf.rot{
-  background:linear-gradient(7.2deg,var(--rot) 20%,var(--rot-sekundaer) 80%);
+  background:var(--rot);
 }
 .seitenkopf.rot .brot{color:rgba(255,255,255,.78);}
 .seitenkopf.rot .brot a{color:var(--weiss);}
@@ -1170,4 +1509,10 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
   .flucht > .kopf-motiv,
   .flucht > .spalte-bild > .platz,
   .flucht > .spalte-bild > .bild{height:auto;min-height:0;}
+  /* Trägt die Fläche eine Formatklasse, greift diese wieder. Ohne die Zeilen
+     bliebe das aspect-ratio:auto der Flucht stehen und die Fläche liefe flach */
+  .flucht > .platz.standard{aspect-ratio:400/268;}
+  .flucht > .platz.hoch{aspect-ratio:400/481;}
+  .flucht > .platz.quer{aspect-ratio:840/366;}
+  .flucht > .platz.buehne-breit{aspect-ratio:1280/560;}
 }

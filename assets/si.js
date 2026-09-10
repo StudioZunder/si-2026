@@ -86,8 +86,9 @@ const zaehle = el => {
   };
   requestAnimationFrame(schritt);
 };
-const band2 = document.getElementById('zahlenband');
-if (band2) {
+/* Jede Kennzahlenleiste zählt für sich, sobald sie ins Bild kommt.
+   Zuvor lief allein die Leiste der Startseite über ihre Kennung. */
+document.querySelectorAll('.zahlenband').forEach(band2 => {
   const auge = new IntersectionObserver(eintraege => {
     eintraege.forEach(e => {
       if (e.isIntersecting) {
@@ -97,7 +98,7 @@ if (band2) {
     });
   }, {threshold:.4});
   auge.observe(band2);
-}
+});
 
 /* Die Markenkreise auf der Startseite blenden nacheinander ein, sobald sie ins Bild kommen */
 const achse = document.querySelector('.achse');
@@ -115,26 +116,46 @@ if (achse) {
 }
 
 /* Der mitfahrende Weg erscheint nach dem ersten Bildschirm und tritt ab,
-   sobald der Abschluss mit demselben Angebot im Blick ist */
-const mitfahrer = document.getElementById('mitfahrer');
-if (mitfahrer) {
-  /* Der Abschluss ist das Ziel des Verweises, so trägt jede Seite ihren eigenen */
-  const ziel = (mitfahrer.getAttribute('href') || '').replace('#','');
+   sobald der Abschluss mit demselben Angebot im Blick ist.
+   Eine Seite kann mehrere Wege tragen, etwa die Markenübersicht mit ihren beiden
+   Aufrufen. Jeder liest sein eigenes Ziel aus dem Verweis am Knopf. */
+document.querySelectorAll('.mitfahrer').forEach(weg => {
+  const ziel = (weg.getAttribute('href') || '').replace('#','');
   const abschluss = ziel ? document.getElementById(ziel) : null;
+  /* Stehen mehrere Wege als Gruppe, treten sie gleich beim Aufruf der Seite auf.
+     Ansage Tammo, 10.09.2026, für die Markenübersicht. Einzelne Wege warten
+     weiterhin den ersten Bildschirm ab. */
+  const sofort = weg.closest('.mitfahrer-gruppe') !== null;
   let abschlussImBlick = false;
+  const pruefe = () => {
+    const weitGenug = sofort || window.scrollY > window.innerHeight * .55;
+    weg.classList.toggle('sichtbar', weitGenug && !abschlussImBlick);
+  };
   if (abschluss) {
     new IntersectionObserver(eintraege => {
       eintraege.forEach(e => { abschlussImBlick = e.isIntersecting; pruefe(); });
     }, {threshold:.12}).observe(abschluss);
   }
-  const pruefe = () => {
-    const weitGenug = window.scrollY > window.innerHeight * .55;
-    mitfahrer.classList.toggle('sichtbar', weitGenug && !abschlussImBlick);
-  };
   window.addEventListener('scroll', pruefe, {passive:true});
   window.addEventListener('resize', pruefe, {passive:true});
   pruefe();
-}
+});
+
+/* ---------- Markenübersicht: es steht immer nur eine Marke offen ---------- */
+/* Öffnet eine Zeile, schließen sich die übrigen. Das gilt über beide Gruppen und
+   beide Spalten hinweg. Die roten Aufrufe am Seitenende bleiben davon frei, sie
+   lassen sich unabhängig voneinander öffnen. Ansage Tammo, 10.09.2026. */
+const markenZeilen = document.querySelectorAll('.marken-liste .marke:not(.marke-ruf)');
+markenZeilen.forEach(zeile => {
+  /* Der Griff am Klick statt am toggle-Ereignis: so schließen die übrigen Zeilen
+     im selben Moment, in dem diese aufgeht. Die Tastatur löst denselben Weg aus. */
+  zeile.querySelector('summary').addEventListener('click', () => {
+    if (zeile.open) return;
+    markenZeilen.forEach(andere => {
+      if (andere !== zeile && andere.open) andere.open = false;
+    });
+  });
+});
 
 /* ---------- Zeitachse auf Über uns: blättern mit den Pfeilen ---------- */
 const spur = document.getElementById('jahreSpur');
