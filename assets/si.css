@@ -577,7 +577,7 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 /* Claim als Subhead unter der Seitenüberschrift MARKEN */
 .kopf-claim{
   font-family:var(--font-h);font-weight:700;text-transform:uppercase;letter-spacing:.02em;
-  font-size:clamp(18px,2.1vw,28px);line-height:1.2;color:var(--text);
+  font-size:clamp(16px,1.5vw,21px);line-height:1.25;color:var(--text);
   margin-top:clamp(10px,1.2vw,16px);
 }
 /* Zwei Spalten je Gruppe, so wie auf der Bestandsseite. Jede Spalte wächst einzeln,
