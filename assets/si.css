@@ -574,6 +574,9 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 /* Marken Alternative: die zweite Gruppe im selben Abschnitt setzt mit Luft neu an.
    Ansage Tammo, 18.09.2026 */
 .marken-gruppe-titel.marken-gruppe-folge{margin-top:clamp(56px,6vw,92px);}
+/* Gruppentitel mit Doppelpunkt statt Strich, der Abstand zur Liste bleibt gleich.
+   Ansage Tammo, 18.09.2026 */
+.marken-gruppe-titel.doppelpunkt{margin-bottom:clamp(24px,2.8vw,38px);}
 /* Claim als Subhead unter der Seitenüberschrift MARKEN */
 .kopf-claim{
   font-family:var(--font-h);font-weight:700;text-transform:uppercase;letter-spacing:.02em;
