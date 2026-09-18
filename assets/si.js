@@ -120,7 +120,10 @@ if (achse) {
    Eine Seite kann mehrere Wege tragen, etwa die Markenübersicht mit ihren beiden
    Aufrufen. Jeder liest sein eigenes Ziel aus dem Verweis am Knopf. */
 document.querySelectorAll('.mitfahrer').forEach(weg => {
-  const ziel = (weg.getAttribute('href') || '').replace('#','');
+  /* Führt der Weg nach außen, etwa zur Registrierung im B2B Shop, nennt data-abschluss
+     den Abschnitt, an dem er abtritt. Ansage Tammo, 18.09.2026 */
+  const href = weg.getAttribute('href') || '';
+  const ziel = weg.dataset.abschluss || (href.startsWith('#') ? href.slice(1) : '');
   const abschluss = ziel ? document.getElementById(ziel) : null;
   /* Stehen mehrere Wege als Gruppe, treten sie gleich beim Aufruf der Seite auf.
      Ansage Tammo, 10.09.2026, für die Markenübersicht. Einzelne Wege warten
@@ -196,10 +199,25 @@ if (spur) {
 /* ---------- Karriere: offene Stellen auf- und zuklappen ---------- */
 /* Ein Klick auf die Kopfzeile öffnet die Stelle, ein zweiter schließt sie wieder.
    Die Kopfzeile ist ein Button, damit Tastatur und Vorlesegeräte sie sicher erreichen. */
-document.querySelectorAll('.stelle .kopf').forEach(kopfzeile => {
+/* Öffnet sich eine Stelle, schließen sich die übrigen. Ansage Tammo, 18.09.2026 */
+const stellenKoepfe = document.querySelectorAll('.stelle .kopf');
+stellenKoepfe.forEach(kopfzeile => {
   kopfzeile.addEventListener('click', () => {
     const stelle = kopfzeile.closest('.stelle');
     const auf = stelle.classList.toggle('offen');
     kopfzeile.setAttribute('aria-expanded', auf ? 'true' : 'false');
+    if (auf) {
+      /* Schließt sich eine längere Stelle darüber, bleibt die gewählte Kopfzeile im Blick */
+      const vorher = kopfzeile.getBoundingClientRect().top;
+      stellenKoepfe.forEach(andere => {
+        const andereStelle = andere.closest('.stelle');
+        if (andereStelle !== stelle && andereStelle.classList.contains('offen')) {
+          andereStelle.classList.remove('offen');
+          andere.setAttribute('aria-expanded', 'false');
+        }
+      });
+      const nachher = kopfzeile.getBoundingClientRect().top;
+      if (nachher !== vorher) window.scrollBy({top: nachher - vorher, behavior: 'instant'});
+    }
   });
 });

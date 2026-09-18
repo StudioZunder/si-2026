@@ -163,6 +163,41 @@ strong{font-weight:700;color:var(--rot);}
 .menue-schalter.offen:hover{background:#F7F7F8;}
 .menue-schalter:focus-visible{outline:2px solid var(--tuerkis);outline-offset:3px;}
 
+/* Der B2B Webshop steht als Einkaufswagen direkt in der Leiste, gleiche Bauart
+   wie der Menüschalter. Ansage Tammo, 18.09.2026: der Punkt im Menü entfällt dafür. */
+.shop-link{
+  margin-left:20px;width:50px;height:50px;border-radius:var(--r-pill);flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s ease,border-color .3s ease;
+}
+.shop-link svg{width:23px;height:23px;stroke:var(--weiss);transition:stroke .25s ease;}
+.shop-link:hover{background:rgba(255,255,255,.34);}
+.shop-link + .menue-schalter{margin-left:12px;}
+.kopfleiste.glas .shop-link,
+.kopfleiste.hell .shop-link,
+.kopfleiste.fest .shop-link{border-color:var(--linie);background:var(--weiss);}
+.kopfleiste.glas .shop-link svg,
+.kopfleiste.hell .shop-link svg,
+.kopfleiste.fest .shop-link svg{stroke:var(--text-stark);}
+.kopfleiste .shop-link:hover svg{stroke:var(--rot);}
+.shop-link:focus-visible{outline:2px solid var(--tuerkis);outline-offset:3px;}
+/* Auf dem Telefon rücken Sprachwahl, Einkaufswagen und Menüschalter enger zusammen,
+   damit die Wortmarke ihre Größe behält */
+@media (max-width:680px){
+  .kopfleiste .wrap{gap:12px;}
+  .kopfleiste .logo{flex:0 0 auto;}
+  .sprachwahl{gap:10px;font-size:14px;}
+  .shop-link{width:42px;height:42px;margin-left:4px;}
+  .shop-link svg{width:20px;height:20px;}
+  .menue-schalter{width:42px;height:42px;}
+  .shop-link + .menue-schalter{margin-left:8px;}
+}
+@media (max-width:370px){
+  .logo img{height:26px;}
+}
+
 /* Menüfläche */
 .menue{
   position:fixed;inset:0;z-index:70;background:var(--weiss);
@@ -185,6 +220,8 @@ strong{font-weight:700;color:var(--rot);}
 .menue-liste a svg{width:22px;height:22px;stroke:var(--tuerkis);transform:rotate(-45deg);
   transition:transform .4s cubic-bezier(.22,1,.36,1);}
 .menue-liste a:hover svg{transform:rotate(0deg);}
+/* Die zweite Fassung der Markenseite steht zur Abstimmung in Rot. Ansage Tammo, 18.09.2026 */
+.menue-liste a.alternativ{color:var(--rot);}
 /* Punkte ohne eigene Seite stehen sichtbar im Menü und ruhen, bis die Seite steht */
 .menue-liste .ruht span{
   display:flex;align-items:center;justify-content:space-between;gap:20px;
@@ -440,8 +477,8 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 /* ---------- 04 Karriere ---------- */
 .karriere{position:relative;}
 /* Die Überschrift steht über dem Motiv, die Karte darunter trägt Text und Weg */
+/* Die Überschrift trägt die Größe aller übrigen Abschnittsköpfe. Ansage Tammo, 18.09.2026 */
 .karriere-titel{
-  font-size:clamp(26px,3.4vw,44px);line-height:1.08;
   margin-bottom:clamp(20px,2.6vw,34px);max-width:22ch;
 }
 .karriere .platz{aspect-ratio:1280/520;}
@@ -450,6 +487,11 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
   /* Oben und unten schmaler, seitlich bleibt die Luft erhalten */
   padding:clamp(20px,2.2vw,28px) clamp(26px,3.4vw,44px);
   max-width:640px;margin-top:-90px;position:relative;z-index:2;
+}
+/* Der Kasten steht schmaler und eingerückt im linken Drittel des Motivs.
+   Ansage Tammo, 18.09.2026 */
+@media (min-width:681px){
+  .karriere .karte{max-width:460px;margin-left:clamp(24px,3.2vw,var(--rinne));}
 }
 
 /* ---------- 05 Aktuelles ---------- */
@@ -462,6 +504,21 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 .news h3{margin-bottom:12px;}
 .news .text{font-size:15px;line-height:1.5;margin-bottom:22px;}
 .news .karte .btn{margin-top:auto;align-self:flex-start;}
+/* News-Seite: mehr Luft zwischen den Reihen, damit Weg und folgendes Motiv klar getrennt
+   stehen. Der Aufmacher läuft über alle drei Spalten, das Motiv nimmt zwei Drittel ein.
+   Ansage Tammo, 18.09.2026 */
+.news.news-seite{row-gap:clamp(56px,6vw,90px);}
+.news .karte.aufmacher{
+  grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+  gap:var(--rinne);align-items:center;
+}
+.news .karte.aufmacher .platz{aspect-ratio:840/480;}
+.news .karte.aufmacher .inhalt{padding:0;}
+.news .karte.aufmacher h3{font-size:clamp(22px,2.4vw,32px);line-height:1.1;}
+@media (max-width:900px){
+  .news .karte.aufmacher{grid-template-columns:1fr;gap:0;}
+  .news .karte.aufmacher .inhalt{padding-top:22px;}
+}
 
 /* ---------- News-Seite ---------- */
 /* Das Raster der Startseite trägt hier alle Beiträge. Auf der Startseite hält
@@ -514,6 +571,15 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 /* Der Strich unter dem Gruppentitel führt die Linie der Seitenköpfe fort */
 .marken-gruppe-titel + .strich{margin-top:0;margin-bottom:clamp(24px,2.8vw,38px);}
 .marken-gruppe-titel{margin-bottom:14px;}
+/* Marken Alternative: die zweite Gruppe im selben Abschnitt setzt mit Luft neu an.
+   Ansage Tammo, 18.09.2026 */
+.marken-gruppe-titel.marken-gruppe-folge{margin-top:clamp(56px,6vw,92px);}
+/* Claim als Subhead unter der Seitenüberschrift MARKEN */
+.kopf-claim{
+  font-family:var(--font-h);font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(18px,2.1vw,28px);line-height:1.2;color:var(--text);
+  margin-top:clamp(10px,1.2vw,16px);
+}
 /* Zwei Spalten je Gruppe, so wie auf der Bestandsseite. Jede Spalte wächst einzeln,
    dadurch bleibt die Nachbarspalte beim Aufklappen ruhig stehen. */
 .marken-spalten{
@@ -619,12 +685,13 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 /* Die beiden Aufrufe schließen die Seite ab: waagerecht nebeneinander, gleich hoch,
    dadurch stehen sie oben wie unten auf einer Linie. Ansage Tammo, 10.09.2026 */
 .marken-abschluss{padding-top:clamp(44px,5vw,74px);}
+/* Ansage Tammo, 18.09.2026: beim Aufklappen wächst allein der geöffnete Kasten,
+   der Nachbar behält seine Höhe */
 .ruf-paar{
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:clamp(20px,2.6vw,32px);align-items:stretch;border-top:0;
+  gap:clamp(20px,2.6vw,32px);align-items:start;border-top:0;
 }
-.ruf-paar .marke.marke-ruf{margin-top:0;display:flex;flex-direction:column;}
-.ruf-paar .marke.marke-ruf .marke-inhalt{flex:1 1 auto;}
+.ruf-paar .marke.marke-ruf{margin-top:0;}
 @media (max-width:900px){
   .ruf-paar{grid-template-columns:1fr;}
 }
@@ -715,6 +782,9 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 }
 
 /* ---------- Service ---------- */
+/* Verweis mitten im Satz, in der Farbe der Bedienung */
+.text-link{color:var(--tuerkis-dunkel);text-decoration:underline;text-underline-offset:3px;}
+.text-link:hover{color:var(--rot);}
 /* Die vier Eckdaten stehen als gleich hohe Karten nebeneinander */
 .service-eckdaten{
   display:grid;
@@ -746,7 +816,8 @@ section{padding:clamp(56px,7vw,96px) 0;position:relative;}
 }
 /* Die Angaben laufen in der Bedienfarbe, so wie die Wege der übrigen Karten.
    Ansage Tammo, 10.09.2026 */
-.service-eckdaten .wert-gross p a{color:var(--tuerkis-dunkel);}
+/* Telefonnummer und Mailadressen stehen in Schwarz. Ansage Tammo, 18.09.2026 */
+.service-eckdaten .wert-gross p a{color:var(--text-stark);}
 .service-eckdaten .wert-gross p a:hover{color:var(--rot);}
 /* Die Liste im Schritt steht eingerückt unter ihrem Satz */
 .schritt-liste{margin:14px 0 0;padding-left:18px;list-style:disc;}
@@ -990,9 +1061,23 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
 .kopf-motiv video{width:100%;height:100%;object-fit:cover;display:block;}
 /* Auf hellem Seitenkopf trägt das Motiv den Bildschatten der übrigen Seite */
 .seitenkopf:not(.rot) .kopf-motiv{box-shadow:var(--schatten-bild);background:var(--flaeche);}
+/* Landingpage-Kopf für Händler und Marken. Ansage Tammo, 18.09.2026:
+   die Headline läuft über die ganze Breite, darunter stehen Text und Motiv 50 zu 50 */
+.seitenkopf h1.kopf-voll{max-width:none;margin-bottom:clamp(26px,3.2vw,46px);}
+.seitenkopf.mit-motiv .kopf-raster.halb{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+.kopf-raster.halb .lead:first-child{margin-top:0;}
+.kopf-raster.halb .kopf-inhalt{align-self:center;}
+.kopf-raster.halb .kopf-motiv{min-height:clamp(300px,30vw,460px);}
+.seitenkopf.mit-motiv:has(.kopf-raster.halb){padding-bottom:clamp(48px,5.4vw,80px);}
 @media (max-width:900px){
-  .seitenkopf.mit-motiv .kopf-raster{grid-template-columns:1fr;}
-  .kopf-motiv{aspect-ratio:16/9;height:auto;min-height:0;}
+  .seitenkopf.mit-motiv .kopf-raster,
+  .seitenkopf.mit-motiv .kopf-raster.halb{grid-template-columns:1fr;}
+  .kopf-motiv,
+  .kopf-raster.halb .kopf-motiv{aspect-ratio:16/9;height:auto;min-height:0;}
+}
+/* Lange Einzelwörter wie DISTRIBUTIONSPARTNER passen so auch auf schmale Telefone */
+@media (max-width:420px){
+  .seitenkopf h1.kopf-voll{font-size:27px;}
 }
 
 /* Textköpfe laufen über die ganze Breite */
@@ -1005,6 +1090,13 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
   font-size:clamp(19px,2.1vw,26px);line-height:1.2;color:var(--text-stark);
   margin-top:clamp(30px,3.4vw,46px);
 }
+
+/* Der Titel über den vier Alltagsblöcken der Händlerseite steht in Rot. Ansage Tammo, 18.09.2026 */
+.alltag-titel.rot{color:var(--rot);}
+
+/* Die drei Belege rücken näher an die Blöcke darüber. Ansage Tammo, 18.09.2026 */
+section.vor-belege{padding-bottom:clamp(36px,4.2vw,58px);}
+section.belege-nah{padding-top:0;}
 
 /* Mitfahrender Weg am rechten Rand. Er ruht außerhalb des Bildes und fährt
    nach dem ersten Bildschirm ein. Am Abschluss tritt er wieder ab. */
@@ -1125,6 +1217,9 @@ footer .recht a:hover,footer .recht button:hover{color:var(--rot);}
   font-family:var(--font-h);font-weight:700;font-size:24px;line-height:1;
   color:var(--rot);
 }
+/* Weiße Ziffer im vollen türkisen Kreis, auf Händler und Service gleich.
+   Ansage Tammo, 18.09.2026 */
+.schritte .nr{background:var(--tuerkis);color:var(--weiss);}
 .schritte h4{font-size:16px;letter-spacing:.04em;margin-bottom:10px;}
 .schritte p{font-size:15px;line-height:1.5;}
 
