@@ -163,36 +163,43 @@ strong{font-weight:700;color:var(--rot);}
 .menue-schalter.offen:hover{background:#F7F7F8;}
 .menue-schalter:focus-visible{outline:2px solid var(--tuerkis);outline-offset:3px;}
 
-/* Der B2B Webshop steht als Einkaufswagen direkt in der Leiste, gleiche Bauart
-   wie der Menüschalter. Ansage Tammo, 18.09.2026: der Punkt im Menü entfällt dafür. */
+/* Der B2B Webshop steht ausgeschrieben direkt in der Leiste, gleiche Bauart
+   wie der Menüschalter. Ansage Tammo, 23.09.2026: Schrift statt Einkaufswagen. */
 .shop-link{
-  margin-left:20px;width:50px;height:50px;border-radius:var(--r-pill);flex:0 0 auto;
+  margin-left:20px;height:50px;padding:0 22px;border-radius:var(--r-pill);flex:0 0 auto;
   border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.18);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .3s ease,border-color .3s ease;
+  display:flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-t);font-size:15px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--weiss);
+  transition:background .3s ease,border-color .3s ease,color .25s ease;
 }
-.shop-link svg{width:23px;height:23px;stroke:var(--weiss);transition:stroke .25s ease;}
 .shop-link:hover{background:rgba(255,255,255,.34);}
 .shop-link + .menue-schalter{margin-left:12px;}
 .kopfleiste.glas .shop-link,
 .kopfleiste.hell .shop-link,
-.kopfleiste.fest .shop-link{border-color:var(--linie);background:var(--weiss);}
-.kopfleiste.glas .shop-link svg,
-.kopfleiste.hell .shop-link svg,
-.kopfleiste.fest .shop-link svg{stroke:var(--text-stark);}
-.kopfleiste .shop-link:hover svg{stroke:var(--rot);}
+.kopfleiste.fest .shop-link{border-color:var(--linie);background:var(--weiss);color:var(--text-stark);}
+.kopfleiste .shop-link:hover{color:var(--rot);}
 .shop-link:focus-visible{outline:2px solid var(--tuerkis);outline-offset:3px;}
-/* Auf dem Telefon rücken Sprachwahl, Einkaufswagen und Menüschalter enger zusammen,
+/* Auf dem Telefon rücken Sprachwahl, B2B Webshop und Menüschalter enger zusammen,
    damit die Wortmarke ihre Größe behält */
 @media (max-width:680px){
   .kopfleiste .wrap{gap:12px;}
   .kopfleiste .logo{flex:0 0 auto;}
   .sprachwahl{gap:10px;font-size:14px;}
-  .shop-link{width:42px;height:42px;margin-left:4px;}
-  .shop-link svg{width:20px;height:20px;}
+  .shop-link{height:42px;padding:0 12px;margin-left:4px;flex-direction:column;
+    font-size:11px;line-height:1.05;letter-spacing:.04em;}
+  .shop-link span{display:block;}
   .menue-schalter{width:42px;height:42px;}
   .shop-link + .menue-schalter{margin-left:8px;}
+}
+/* Auf sehr schmalen Telefonen rücken Leiste und Wortmarke noch etwas enger,
+   damit B2B Webshop und Menüschalter vollständig stehen */
+@media (max-width:400px){
+  .kopfleiste .wrap{gap:8px;}
+  .kopfleiste .logo img{height:27px;}
+  .sprachwahl{gap:6px;font-size:13px;}
+  .shop-link{padding:0 9px;}
 }
 @media (max-width:370px){
   .logo img{height:26px;}
@@ -1220,9 +1227,9 @@ section.belege-nah{padding-top:0;}
   font-family:var(--font-h);font-weight:700;font-size:24px;line-height:1;
   color:var(--rot);
 }
-/* Weiße Ziffer im vollen türkisen Kreis, auf Händler und Service gleich.
-   Ansage Tammo, 18.09.2026 */
-.schritte .nr{background:var(--tuerkis);color:var(--weiss);}
+/* Ziffern im Kreis wie die Pfeilkreise der Buttons: Kreis helltürkis, Ziffer türkis.
+   Ansage Tammo, 23.09.2026, gilt seitenweit */
+.schritte .nr{background:var(--tuerkis-hell);color:var(--tuerkis);}
 .schritte h4{font-size:16px;letter-spacing:.04em;margin-bottom:10px;}
 .schritte p{font-size:15px;line-height:1.5;}
 
