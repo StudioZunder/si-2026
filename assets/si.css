@@ -1647,6 +1647,8 @@ section.belege-nah{padding-top:0;}
 .kopf-feld .feld-spalten{
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3vw,44px);
 }
+/* Die Buttons stehen rechts unter dem zweiten Text. Ansage Tammo, 07.10.2026 */
+.kopf-feld .feld-rechts .sek-intro{margin:0;}
 .kopf-feld .btn-reihe{margin-top:24px;}
 .seitenkopf.mit-motiv:has(.kopf-buehne){padding-bottom:clamp(48px,5.4vw,80px);}
 @media (max-width:680px){
